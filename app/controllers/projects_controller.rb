@@ -28,7 +28,7 @@ class ProjectsController < ApplicationController
   end
   
   def update
-  	params[:project][:user_ids] ||= []z
+  	params[:project][:user_ids] ||= []
   		
     if @project.update_attributes(params[:project])
       redirect_to projects_path

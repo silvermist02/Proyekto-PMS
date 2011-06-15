@@ -14,7 +14,7 @@ class UsersController < ApplicationController
   
   def create
     @user = User.new params[:user]
-   @user.first_name = "Hi"
+    @user.first_name = "Hi"
 	  @user.middle_name = @user.user_name
 	  @user.last_name = @user.user_name
 	  @user.password = @user.user_name
@@ -33,8 +33,9 @@ class UsersController < ApplicationController
   end
   
   def update
+    @email = current_user.email
     if @user.update_attributes(params[:user])
-      sign_in(@user, :bypass => true) if @user.email.eql? current_user.email
+      sign_in(@user, :bypass => true) if @user.email.eql? @email
       redirect_to users_path
     else
       render :edit

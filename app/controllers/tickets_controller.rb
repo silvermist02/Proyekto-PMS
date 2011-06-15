@@ -1,8 +1,8 @@
 class TicketsController < ApplicationController
   before_filter :get_projects, :selected
   before_filter :get_project, :only => [:index, :create]
-  before_filter :get_index, :only => [:index, :create]
-  
+  before_filter :get_index, :only => [:index]
+  #around_filter :get_index, :only => [:create]
 
   def index
 
@@ -26,6 +26,8 @@ class TicketsController < ApplicationController
     @ticket.created_by = current_user.id
 
     @ticket.save
+    
+    get_index
   end
   
   def update
@@ -40,9 +42,11 @@ class TicketsController < ApplicationController
   
   def destroy
     @ticket = Ticket.find(params[:id])
+    @project = @ticket.project
     @ticket.destroy
-
-    redirect_to projects_path
+    
+    @tickets = @project.tickets.search(params[:date], params[:status], params[:priority])
+    @users = User.search(params[:name])
   end
   
   def assign

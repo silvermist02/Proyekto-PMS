@@ -1,16 +1,22 @@
 class User < ActiveRecord::Base
+
+  attr_accessor :login
+  
   # Include default devise modules. Others available are:
   # :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable and :omniauthable
+  
   devise :database_authenticatable, :registerable, :lockable,
          :recoverable, :rememberable, :trackable, :validatable, :confirmable
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me, :first_name, :middle_name, :last_name, :user_name, :birthdate, :role_id, :admin, :locked_at
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :first_name, :middle_name, :last_name, :user_name, :birthdate, :role_id, :admin, :login
 
   has_one :role
-	#has_many :tickets, :dependent => :destroy
-  #has_many :comments, :dependent => :destroy
+	has_many :tickets#, :dependent => :destroy
+  has_many :comments#, :dependent => :destroy
   has_and_belongs_to_many :projects
+  
+  
   
   validates_presence_of :first_name, :middle_name, :last_name, :user_name, :email
   
@@ -35,5 +41,13 @@ class User < ActiveRecord::Base
 	  self.password = self.user_name
 	  self.password_confirmation = self.user_name
 	end
+	
+protected
+
+ def self.find_for_database_authentication(warden_conditions)
+   conditions = warden_conditions.dup
+   login = conditions.delete(:login)
+   where(conditions).where(["lower(user_name) = :value OR lower(email) = :value", { :value => login.downcase }]).first
+ end
 	
 end

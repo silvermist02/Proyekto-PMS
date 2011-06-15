@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
   
-  before_filter :get_projects, :selected
+  before_filter :get_projects, :selected, :authenticate_user!
   
   def index
 
