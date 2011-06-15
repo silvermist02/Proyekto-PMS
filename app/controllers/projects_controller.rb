@@ -28,6 +28,8 @@ class ProjectsController < ApplicationController
   end
   
   def update
+  	params[:project][:user_ids] ||= []
+  		
     if @project.update_attributes(params[:project])
       redirect_to projects_path
     else
@@ -46,6 +48,16 @@ class ProjectsController < ApplicationController
     @project = Project.find params[:project_id]
   end
   
+  def add_member
+  	@users = User.all
+  	@project = Project.find(params[:project_id])
+  end
+  
+  def remove_member
+  	@users = User.all
+  	@project = Project.find(params[:project_id])
+  end
+    
 private
   
   def get_projects

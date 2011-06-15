@@ -2,8 +2,8 @@
 // This file is automatically included by javascript_include_tag :defaults
 function proj_change_selected(index)
   {
-    $("#proj_nav li a").attr("id", "");
-    $("#proj_nav li a:eq(" + index + ")").attr("id", "selected");
+    $("#content_nav li a").attr("id", "");
+    $("#content_nav li a:eq(" + index + ")").attr("id", "selected");
   }
   
 

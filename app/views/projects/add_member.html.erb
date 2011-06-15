@@ -1,0 +1,20 @@
+<h2>Add Project Members</h2>
+
+<%= form_for @project do |f| %>
+
+  <p>
+		<% @users.each do |user| %>
+			<% unless @project.users.include?(user) %>
+				<div>
+					<%= check_box_tag "project[user_ids][]", user.id %>
+					<%= user.last_name %>
+				</div>
+			<% else %>
+				<%= hidden_field_tag "project[user_ids][]", user.id %>
+			<% end %>
+		<% end %>
+	</p>
+
+  <p class="submit-button right"><%= f.submit "Add" %></p>
+
+<% end %>
