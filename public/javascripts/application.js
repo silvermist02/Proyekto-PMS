@@ -19,21 +19,6 @@ function datepicker()
   }); 
 }
 
-$(function() {
-	$("#slider-range-min").slider({
-		range: "min",
-		value: 0,
-		min: 0,
-		max: 1440,
-		slide: function( event, ui ) {
-			$("#ticket_logged_time").val( ui.value + "hour/s");
-		}
-	});
-	$("#ticket_logged_time").val( $("#slider-range-min").slider("value") + "hour/s");
-});
-
-
-
 function check_roles()
 {
   if($("#user_admin").is(":checked"))
@@ -61,7 +46,6 @@ function error_dialog(msg, error_title)
 			}
 		});
 }
-
 
 $(function()
 {
@@ -124,6 +108,19 @@ $(function()
       $(this).html("&laquo; hideme");
     }
   });
+  
+  ////log time slider
+  
+  $("#slider-range-min").slider({
+		range: "min",
+		value: 0,
+		min: 0,
+		max: 720,
+		slide: function( event, ui ) {
+			$("#ticket_logged_time").val( ui.value + "hour/s");
+		}
+	});
+	$("#ticket_logged_time").val( $("#slider-range-min").slider("value") + "hour/s");
 
   check_roles();  
   
