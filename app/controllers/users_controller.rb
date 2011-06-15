@@ -35,7 +35,7 @@ class UsersController < ApplicationController
 
     
   def unlock
-    @user.unlock
+    @user.middle_name = nil
     @user.update_attributes(params[:user])
 
     redirect_to users_path
