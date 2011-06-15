@@ -2,13 +2,10 @@ Proyekto::Application.routes.draw do
 
   post 'users' => 'users#create' #override devise's registration to maintain RESTful interface
 
+
   devise_for :users, :maximum_attempts => 3, :unlock_strategy => :time, :unlock_in => 1, :controllers => { :confirmations => 'users/confirmations' }
   
-  resources :users do
-    member do
-      get 'unlock'
-    end
-  end
+  resources :users
     
   resources :projects do
     get 'overview', :to => 'projects#overview'

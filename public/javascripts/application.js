@@ -20,6 +20,16 @@ function datepicker()
   }); 
 }
 
+
+function check_roles()
+{
+  if($("#user_admin").is(":checked"))
+      $(".form_role").slideUp();
+  else
+      $(".form_role").slideDown();
+
+}
+
 function error_dialog(msg, error_title)
 {
   $("body").append("<div id=\"dialog-message\"></div>");
@@ -37,14 +47,12 @@ function error_dialog(msg, error_title)
 				}
 			}
 		});
-
-
 }
 
 
 $(function()
 {
-
+  
   $("#project-options-list").change(function()
   {
     loc = $(this).val();
@@ -58,10 +66,7 @@ $(function()
   
   $("#user_admin").change(function()
   {
-    if($(this).is(":checked"))
-        $(".form_role").slideUp();
-    else
-        $(".form_role").slideDown();
+    check_roles();
   });
 
   /////////// Ripped from Articulos
@@ -107,6 +112,8 @@ $(function()
     }
   });
 
+  check_roles();  
+  
   ///////// Initialize datepicker
 
   datepicker(); 

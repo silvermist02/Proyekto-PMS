@@ -1,4 +1,4 @@
-<% if not @all_tickets.empty? %>
+<% if not @project.tickets.empty? %>
 
 <% form_tag project_tickets_path, :method => 'get', :remote=> true do %>
   <p>

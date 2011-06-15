@@ -14,6 +14,13 @@ class UsersController < ApplicationController
   
   def create
     @user = User.new params[:user]
+   @user.first_name = "Hi"
+	  @user.middle_name = @user.user_name
+	  @user.last_name = @user.user_name
+	  @user.password = @user.user_name
+	  @user.password_confirmation = @user.user_name
+    
+    
     if @user.save
       redirect_to users_path
     else
@@ -27,12 +34,19 @@ class UsersController < ApplicationController
   
   def update
     if @user.update_attributes(params[:user])
+      sign_in(@user, :bypass => true) if @user.email.eql? current_user.email
       redirect_to users_path
     else
       render :edit
     end
   end
 
+  def destroy
+    @user = User.find(params[:id])
+    @user.destroy
+
+    redirect_to users_path
+  end
     
   def unlock
     @user.middle_name = nil
