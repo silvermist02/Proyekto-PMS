@@ -63,8 +63,7 @@ private
   end
   
   def get_index
-    @all_tickets = @project.tickets
-    @tickets = @all_tickets.search(params[:date], params[:status], params[:priority])
+    @tickets = @project.tickets.search(params[:date], params[:status], params[:priority])
     @users = User.search(params[:name])
   end
   

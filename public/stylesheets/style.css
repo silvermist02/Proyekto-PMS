@@ -310,13 +310,13 @@ fieldset {
   display: none;
   background: #fdfdfd;
   padding: 4px;
+
+  border-left: 1px solid #001A31;
+  border-right: 1px solid #001A31;
 }
 
 #whoami { 
-  background: #fdfdfd; 
-  -moz-border-radius: 0 0 10px 10px;
-  -webkit-border-radius: 0 0 10px 10px;
-  border-radius: 0 0 10px 10px;
+  
 }
 
 #whoami span {
@@ -325,14 +325,20 @@ fieldset {
   text-align: center;
   color: #004480;
   font-weight: bold;
-}
-
-#whoami span:hover {
-  background: -moz-linear-gradient(top, #eee, #fdfdfd);
-  background: -webkit-gradient(linear, center top, center bottom, from(#fdfdfd), to(#eee));
+  background: #fdfdfd;
+  border-bottom: 1px solid #001A31;
+  border-left: 1px solid #001A31;
+  border-right: 1px solid #001A31;
   -moz-border-radius: 0 0 10px 10px;
   -webkit-border-radius: 0 0 10px 10px;
   border-radius: 0 0 10px 10px;
+
+}
+
+#whoami span:hover {
+  background: #eee;
+  background: -moz-linear-gradient(top, #eee, #fdfdfd);
+  background: -webkit-gradient(linear, center top, center bottom, from(#fdfdfd), to(#eee));
 }
 
 #whoami-content span{
