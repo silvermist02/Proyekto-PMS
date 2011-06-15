@@ -129,7 +129,7 @@ h1, h2, h3  {
 }
 
 
-#nav li a:hover {
+#nav li a:hover, #nav li #selected {
   color: #004480;
   background: #fff;
   text-decoration: none;
@@ -299,7 +299,7 @@ fieldset {
   width: 150px;
   position:fixed;
   top: 0;
-  right: 1%;
+  left: 1%;
   z-index: 100;
   padding: 1px;
   font-size: 13px;
@@ -315,6 +315,8 @@ fieldset {
 #whoami { 
   background: #fdfdfd; 
   -moz-border-radius: 0 0 10px 10px;
+  -webkit-border-radius: 0 0 10px 10px;
+  border-radius: 0 0 10px 10px;
 }
 
 #whoami span {
@@ -329,6 +331,8 @@ fieldset {
   background: -moz-linear-gradient(top, #eee, #fdfdfd);
   background: -webkit-gradient(linear, center top, center bottom, from(#fdfdfd), to(#eee));
   -moz-border-radius: 0 0 10px 10px;
+  -webkit-border-radius: 0 0 10px 10px;
+  border-radius: 0 0 10px 10px;
 }
 
 #whoami-content span{

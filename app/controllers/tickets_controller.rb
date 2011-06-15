@@ -1,7 +1,8 @@
 class TicketsController < ApplicationController
-  before_filter :get_projects
+  before_filter :get_projects, :selected
   before_filter :get_project, :only => [:index, :create]
   before_filter :get_index, :only => [:index, :create]
+  
 
   def index
 
@@ -58,6 +59,10 @@ private
     @all_tickets = @project.tickets
     @tickets = @all_tickets.search(params[:date], params[:status], params[:priority])
     @users = User.search(params[:name])
+  end
+  
+  def selected
+    @selected = "project";
   end
   
 end
