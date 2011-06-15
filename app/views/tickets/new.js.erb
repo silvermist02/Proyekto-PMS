@@ -1,3 +1,2 @@
 $(".project_page_content").html("<%= escape_javascript(render :partial => 'new', :locals => { :ticket => @ticket } ) %>").hide().fadeIn();
-$("#proj_nav li a").attr("id", "");
-$("#proj_nav li a:eq(2)").attr("id", "selected");
+proj_change_selected(2);

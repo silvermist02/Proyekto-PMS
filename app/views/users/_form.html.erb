@@ -23,7 +23,7 @@
   <p><%= f.label :password_confirmation %>
   <%= f.password_field :password_confirmation %></p>
   
-  <% if not @roles.empty? %>
+  <% if not @roles.nil? and not @roles.empty? %>
   <div class="form_role">
   <%= f.label "Role"%>
   <%= f.select :role_id, options_from_collection_for_select(@roles, 'id', 'name')%>
@@ -31,7 +31,7 @@
   <% end %>
   
   <p><%= f.label :birthdate %>
-  <%= f.text_field :birthdate %></p>
+  <%= f.text_field :birthdate, :class => "date_picker" %></p>
 
   <p class="submit-button right"><%= f.submit "Send" %></p>
 

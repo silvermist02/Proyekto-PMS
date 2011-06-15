@@ -6,6 +6,10 @@
   
 }
 
+body {
+  background: #f9f9f9;
+} 
+
 a {
   color: #004480;
   text-decoration: none;
@@ -26,17 +30,17 @@ fieldset ul li {
 }
 
 h1, h2, h3  { 
-  color: #004480;
+  color: #001A31;
   margin: 0 0 10px;
   padding: 0 0 0 10px;
 }
 
-h1, h2 { 
+/*h1, h2 { 
   border-bottom: 1px solid #001A31;
   background: #F1F1F1;
   background: -moz-linear-gradient(center top , #FFFFFF, #F1F1F1);
   background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#ffffff), to(#F1F1F1));
-}
+}*/
 
 .right { float: right; }
 
@@ -141,7 +145,7 @@ h1, h2 {
 
 form {
   font-size: 13px;
-  width:408px;
+  /*width:408px;*/
 }
 
 form label {
@@ -155,13 +159,13 @@ form label:after {
   content: ":"
 }
 
-form input[type=text], form input[type=email], form input[type=password] {
+form input[type=text], form input[type=email], form input[type=password], select {
   border: 1px solid #d3d3dd;
   background: #f1f1f1;
   padding: 4px;
 }
 
-form input[type=text]:focus, form input[type=email]:focus, form input[type=password]:focus {
+form input[type=text]:focus, form input[type=email]:focus, form input[type=password]:focus, select:focus {
   border: 1px solid #313131;
   background: #fdfdfd;
 }
@@ -200,6 +204,16 @@ fieldset {
   border: none;
 }
 
+.field_with_errors {
+  display: inline-block;
+}
+
+.field_with_errors input[type=password], .field_with_errors input[type=email], .field_with_errors input[type=text], .field_with_errors textarea {
+  border: 1px solid #ff0000;
+}
+
+.field_with_errors label { color: #ff0000; }
+
 /********************** TABLES **********************/
 
 .content_tbl {
@@ -210,18 +224,18 @@ fieldset {
 
 .content_tbl th {
   background: #001A31;
-  background: -moz-linear-gradient(center top , #004480, #001A31) repeat scroll 0 0 transparent;
+  background: -moz-linear-gradient(center top , #001A31, #004480) repeat scroll 0 0 transparent;
   background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#004480), to(#001A31));
   color: #FFFFFF;
   font-weight: normal;
   padding: 4px 10px;
-  border: 1px solid #fff;
+  border: 1px solid #f9f9f9;
   text-align: left;
 }
 
 .content_tbl td {
   padding: 4px 10px;
-  border: 1px solid #fff;
+  border: 1px solid #f9f9f9;
   text-align: left;
 }
 
@@ -233,25 +247,30 @@ fieldset {
   margin: 10px 0 0 0;
 }
 
-.critical td{
+.critical {
   color: #ff0000;
 }
+
+.content_search { margin: 20px auto; }
+
+.content_error { width: 300px; }
+
 /********************** PROJECTS PAGE **********************/
 
 /********************** Navigation **********************/
 
-#proj_nav {
-  margin: -44px 0 10px 0;
+#content_nav {
+  margin: -44px 20px 10px 0;
   float: right;
 }
 
-#proj_nav li {
+#content_nav li {
   list-style: none;
   float: left;
   margin: 4px 15px;
 }
 
-#proj_nav li a {
+#content_nav li a {
   display: block;
   width: 100%;
   color:  #fff;
@@ -263,12 +282,12 @@ fieldset {
   -webkit-border-radius: 8px;
 }
 
-#proj_nav li a:hover {
+#content_nav li a:hover {
   background: #004480;
   text-decoration: none;
 }
 
-#proj_nav #selected {
+#content_nav #selected {
   color: #004480;
   background: #fff;
   border: 1px solid #004480;

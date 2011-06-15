@@ -3,7 +3,9 @@ class TicketsController < ApplicationController
   before_filter :get_project, :only => [:index, :create]
 
   def index
-    @tickets = @project.tickets
+    @all_tickets = @project.tickets
+    @tickets = @all_tickets.search(params[:date], params[:status], params[:priority])
+    @users = User.search(params[:name])
   end
   
   def show
@@ -20,7 +22,7 @@ class TicketsController < ApplicationController
   
   def create
     @ticket = @project.tickets.build(params[:ticket])
-    @ticket.project_id = current_user.id;
+    @ticket.created_by = current_user.id;
     @tickets = @project.tickets
     
     @ticket.save

@@ -1,9 +1,26 @@
-<% if not @tickets.empty? %>
+<% if not @all_tickets.empty? %>
 
-<table class="content_tbl">
+<% form_tag project_tickets_path, :method => 'get', :remote=> true do %>
+  <p>
+  <strong>Filter Search</strong>
+  Ticket Name: <%= text_field_tag :name %>
+  Date: <%= text_field_tag :date, "", :class => "date_picker" %>
+  <%=  select_tag :status, options_for_select('-- Status --' => '', 'Active' => 'Active', 'Closed' => 'Closed') %>
+  <%=  select_tag :priority, options_for_select('-- Priority --' => '', 'Minor' => 'Minor', 'Normal' => 'Normal', 'Major' => 'Major', 'Critical' => 'Critical') %>
+  <%= submit_tag "Search", :name => nil, :date => nil, :status => nil, :priority => nil %>
+  </p>
+<% end %>
+
+  <% if not @tickets.empty? %>
+<table class="content_search content_tbl">
   <tr>
     <th>Name</th>
     <th>Description</th>
+    <th>Status</th>
+    <th>Priority</th>
+    <th>Tracker</th>
+    <th>Assigned To</th>
+    <th>Date Created</th>
     <th></th>
   </tr>
 
@@ -12,18 +29,27 @@
     klass = ""
     klass = ticket.priority.eql?("Critical") ? "critical" : ""
   %>
-  <tr class="<%= cycle("", "even")%> <%= klass %>">
-    <td><%= ticket.name %></td>
+  <tr class="<%= cycle("", "even")%>">
+    <td class="<%= klass %>"><%= ticket.name %></td>
     <td><%= ticket.description %></td>
+    <td><%= ticket.status %></td>
+    <td><%= ticket.priority %></td>
+    <td><%= ticket.tracker %></td>
+    <% @users.each do |user| %>
+			<td><%= user.full_name if user.id.eql?(ticket.assigned_to) %></td>
+		<% end %>
+		<td><%= ticket.created_at.to_date %></td>
     <td><%= link_to 'Show', ticket %> | <%= link_to 'Edit', edit_ticket_path(ticket) %> | <%= link_to 'Destroy', ticket, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
 </table>
+  <% else %>
 
-<br />
-
+<p class="content_search content_error">No tickets matched your query.</p>
+  <% end %>
+  
 <% else %>
 
-<p>There are no tickets yet.</p>
+<p class="content_error">There are no tickets yet.</p>
 
 <% end %>

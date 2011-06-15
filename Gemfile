@@ -10,7 +10,7 @@ gem  'mysql2', '<0.3.0'
 
 gem 'rake', '0.8.7'
 
-gem 'order_me', '0.0.8'
+#gem 'order_me', '0.0.8'
 
 gem 'devise'
 gem 'cancan'
@@ -18,9 +18,9 @@ gem 'paperclip', '~>2.3'
 gem 'jquery-rails'
 gem 'will_paginate'
 gem 'annotate'
-gem 'geomap', '0.0.10'
-gem 'exception_notification', :require => 'exception_notifier'
-gem 'ckeditor', :git => 'git://github.com/galetahub/rails-ckeditor.git', :branch => 'rails3'
+#gem 'geomap', '0.0.10'
+#gem 'exception_notification', :require => 'exception_notifier'
+#gem 'ckeditor', :git => 'git://github.com/galetahub/rails-ckeditor.git', :branch => 'rails3'
 
 #gem 'haml-rails'
 
@@ -37,23 +37,23 @@ gem 'ckeditor', :git => 'git://github.com/galetahub/rails-ckeditor.git', :branch
 
 # Bundle the extra gems:
 # gem 'bj'
-gem 'nokogiri'
+#gem 'nokogiri'
 # gem 'sqlite3-ruby', :require => 'sqlite3'
 # gem 'aws-s3', :require => 'aws/s3'
 
 # Bundle gems for the local environment. Make sure to
 # put test-only gems in this group so their generators
 # and rake tasks are available in development mode:
- group :development, :test do
+# group :development, :test do
 #   gem 'webrat'
-  group :cucumber do
-    gem 'rspec-rails', '~> 2.6.1'
-    gem 'capybara'
-    gem 'database_cleaner'
-    gem 'cucumber-rails'
-    gem 'cucumber'
-    gem 'factory_girl_rails', :git => 'git://github.com/thoughtbot/factory_girl_rails.git'
-    gem 'spork'
-    gem 'launchy'
-  end
- end
+#  group :cucumber do
+#    gem 'rspec-rails', '~> 2.6.1'
+ #   gem 'capybara'
+ #   gem 'database_cleaner'
+ #   gem 'cucumber-rails'
+ #   gem 'cucumber'
+   #\ gem 'factory_girl_rails', :git => 'git://github.com/thoughtbot/factory_girl_rails.git'
+  #  gem 'spork'
+  #  gem 'launchy'
+ # end
+ #end

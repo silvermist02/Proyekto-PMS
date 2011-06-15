@@ -2,8 +2,7 @@
 <% if not @ticket.errors.any?%>
 
 $(".project_page_content").html("<%= escape_javascript(render :partial => 'tickets/index', :locals => { :project => @project } ) %>").hide().fadeIn();
-$("#proj_nav li a").attr("id", "");
-$("#proj_nav li a:eq(1)").attr("id", "selected");
+proj_change_selected(1);
 
 <% else %>
 var div_con = "<div id=\"dialog-message\">";

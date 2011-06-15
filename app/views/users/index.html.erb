@@ -1,4 +1,27 @@
-USER LIST
+<div class="grid_12">
+
+<h2>System Users</h2>
+
+<ul id="content_nav">
+
+  <li><%= link_to "All Users", "#", :id => "selected", :remote => true %></li>
+  
+  <li><%= link_to "Unlock User", "#", :remote => true %></li>
+  
+  <li><%= link_to "Create User", "#", :remote => true %></li>
+  
+</ul>
+</div>
+
+<div class="clear"></div>
+
+
+
+<div class="project_page_content grid_12">
+  
+ 
+  
+</div>
 <table class="content_tbl">
   <tr>
     <th>Name</th>
@@ -10,7 +33,10 @@ USER LIST
   <tr class="<%= cycle("", "even") %>">
     <td><%= link_to user.full_name, user %></td>
     <td><%= user.email %></td>
-    <td><%= link_to 'Edit', edit_user_path(user) %> | <%= link_to 'Destroy', user, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td>
+      <%= link_to 'Edit', edit_user_path(user) %> | <%= link_to 'Destroy', user, :confirm => 'Are you sure?', :method => :delete %> 
+      <%= link_to "Unlock", user_unlock_path(user) if not user.locked_at.eql?("NULL") %> 
+    </td>
   </tr>
 <% end %>
 </table>
