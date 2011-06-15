@@ -11,15 +11,17 @@ class UsersController < ApplicationController
     @user = User.new
   end
   
-  
   def create
     @user = User.new params[:user]
+<<<<<<< HEAD
     @user.first_name = "Hi"
+=======
+   	@user.first_name = "Hi"
+>>>>>>> f02c6df4715994342ac728695bf2997ef3143020
 	  @user.middle_name = @user.user_name
 	  @user.last_name = @user.user_name
 	  @user.password = @user.user_name
 	  @user.password_confirmation = @user.user_name
-    
     
     if @user.save
       redirect_to users_path
