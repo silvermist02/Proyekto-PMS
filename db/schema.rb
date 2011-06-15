@@ -71,7 +71,7 @@ ActiveRecord::Schema.define(:version => 20110614072338) do
     t.string   "status"
     t.string   "priority"
     t.integer  "assigned_to"
-    t.time     "logged_time"
+    t.string   "logged_time"
     t.integer  "created_by"
     t.string   "tracker"
     t.integer  "project_id"

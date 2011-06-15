@@ -19,6 +19,20 @@ function datepicker()
   }); 
 }
 
+$(function() {
+	$("#slider-range-min").slider({
+		range: "min",
+		value: 0,
+		min: 0,
+		max: 1440,
+		slide: function( event, ui ) {
+			$("#ticket_logged_time").val( ui.value + "hour/s");
+		}
+	});
+	$("#ticket_logged_time").val( $("#slider-range-min").slider("value") + "hour/s");
+});
+
+
 
 function check_roles()
 {

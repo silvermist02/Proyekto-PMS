@@ -6,9 +6,9 @@
 
   <li><%= link_to "Overview", "#", :id => "selected", :remote => true %></li>
   
-  <li><%= link_to "Assign", "#", :remote => true %></li>
+  <li><%= link_to "Assign", assign_ticket_path(@ticket.id) %></li>
   
-  <li><%= link_to "Log Time" %></li>
+  <li><%= link_to "Log Time", log_time_ticket_path(@ticket.id) %></li>
   
   <li><%= link_to "Edit Ticket", "#", :remote => true %></li>
   

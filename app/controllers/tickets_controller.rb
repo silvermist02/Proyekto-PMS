@@ -46,10 +46,12 @@ class TicketsController < ApplicationController
   end
   
   def assign
-  	
+  	@users = User.all
+  	@ticket = Ticket.find(params[:id])
   end
   
   def log_time
+		@ticket = Ticket.find(params[:id])
   end
   
 private

@@ -1,0 +1,11 @@
+<h2>Time spent on Ticket</h2>
+
+<%= form_for @ticket do |f| %>
+
+  <p><%= f.label "Time: hh:mm:ss" %>
+  <%= f.text_field :logged_time, :readonly => "readonly"%></p>
+  <div id="slider-range-min"></div>
+	
+  <p class="submit-button right"><%= f.submit "Log" %></p>
+  
+<% end %>
