@@ -1,6 +1,6 @@
 class ProjectsController < ApplicationController
   before_filter :get_projects, :selected
-  before_filter :get_project, :only => [:show, :edit, :update, :destroy]
+  before_filter :get_project, :only => [:show, :edit, :update, :destroy, :add_member, :remove_member]
 
   def index
     @projects = Project.all
@@ -50,12 +50,10 @@ class ProjectsController < ApplicationController
   
   def add_member
   	@users = User.all
-  	@project = Project.find(params[:project_id])
   end
   
   def remove_member
   	@users = User.all
-  	@project = Project.find(params[:project_id])
   end
     
 private

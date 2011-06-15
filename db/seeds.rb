@@ -12,5 +12,5 @@ user = User.create(
   :last_name              => 'admin',  
   :email                  => 'tudorblink@gmail.com', 
   :password               => 'password', 
-  :password_confirmation   => 'password' 
+  :password_confirmation  => 'password', 
 ).confirm! 

@@ -4,7 +4,7 @@
 
   <p>
 		<% @users.each do |user| %>
-			<% unless @project.users.include?(user) %>
+			<% unless @project.users.include?(user) or user.id == 1 %>
 				<div>
 					<%= check_box_tag "project[user_ids][]", user.id %>
 					<%= user.last_name %>

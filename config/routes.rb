@@ -11,8 +11,10 @@ Proyekto::Application.routes.draw do
   end
     
   resources :projects do
-  	get 'add_member', :to => 'projects#add_member'
-  	get 'remove_member', :to => 'projects#remove_member'
+  	member do
+  		get 'add_member', :to => 'projects#add_member'
+  		get 'remove_member', :to => 'projects#remove_member'
+    end
     get 'overview', :to => 'projects#overview'
     resources :tickets
   end
