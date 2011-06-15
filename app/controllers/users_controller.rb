@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_filter :get_projects
+  before_filter :get_projects, :selected
   before_filter :get_roles, :only => [:new, :edit]
   before_filter :get_user, :only => [:edit, :update, :unlock]
 
@@ -35,7 +35,7 @@ class UsersController < ApplicationController
 
     
   def unlock
-    @user.unlock
+    @user.middle_name = nil
     @user.update_attributes(params[:user])
 
     redirect_to users_path
@@ -53,6 +53,10 @@ private
 
   def get_user
     @user = User.find(params[:id])
+  end
+  
+ def selected
+    @selected = "user";
   end
   
 end

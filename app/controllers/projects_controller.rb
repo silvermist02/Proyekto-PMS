@@ -1,5 +1,5 @@
 class ProjectsController < ApplicationController
-  before_filter :get_projects
+  before_filter :get_projects, :selected
   before_filter :get_project, :only => [:show, :edit, :update, :destroy]
 
   def index
@@ -66,6 +66,10 @@ private
   
   def get_project
     @project = Project.find params[:id]
+  end
+  
+  def selected
+    @selected = "project";
   end
   
 end

@@ -1,5 +1,5 @@
 class RolesController < ApplicationController
-  before_filter :get_projects
+  before_filter :get_projects, :selected
 
   def index
     @roles = Role.all
@@ -47,6 +47,10 @@ private
   
   def get_projects
     @projects = Project.all
+  end
+  
+  def selected
+    @selected = "role";
   end
   
 end

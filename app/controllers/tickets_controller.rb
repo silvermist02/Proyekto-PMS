@@ -1,15 +1,16 @@
 class TicketsController < ApplicationController
-  before_filter :get_projects
+  before_filter :get_projects, :selected
   before_filter :get_project, :only => [:index, :create]
+  before_filter :get_index, :only => [:index, :create]
+  
 
   def index
-    @all_tickets = @project.tickets
-    @tickets = @all_tickets.search(params[:date], params[:status], params[:priority])
-    @users = User.search(params[:name])
+
   end
   
   def show
     @ticket = Ticket.find(params[:id])
+    @comments = @ticket.comments
   end
   
   def new
@@ -22,9 +23,8 @@ class TicketsController < ApplicationController
   
   def create
     @ticket = @project.tickets.build(params[:ticket])
-    @ticket.created_by = current_user.id;
-    @tickets = @project.tickets
-    
+    @ticket.created_by = current_user.id
+
     @ticket.save
   end
   
@@ -54,4 +54,15 @@ private
   def get_project
     @project = Project.find params[:project_id]
   end
+  
+  def get_index
+    @all_tickets = @project.tickets
+    @tickets = @all_tickets.search(params[:date], params[:status], params[:priority])
+    @users = User.search(params[:name])
+  end
+  
+  def selected
+    @selected = "project";
+  end
+  
 end

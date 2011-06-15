@@ -22,6 +22,7 @@
  
   
 </div>
+
 <table class="content_tbl">
   <tr>
     <th>Name</th>
@@ -35,7 +36,7 @@
     <td><%= user.email %></td>
     <td>
       <%= link_to 'Edit', edit_user_path(user) %> | <%= link_to 'Destroy', user, :confirm => 'Are you sure?', :method => :delete %> 
-      <%= link_to "Unlock", user_unlock_path(user) if not user.locked_at.eql?("NULL") %> 
+      <%= link_to "Unlock", unlock_user_path(user) if not user.locked_at.nil? %> 
     </td>
   </tr>
 <% end %>

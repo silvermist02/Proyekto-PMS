@@ -1,4 +1,7 @@
 class CommentsController < ApplicationController
+  
+  before_filter :get_ticket
+
   def index
     @comments = Comment.all
   end
@@ -16,12 +19,12 @@ class CommentsController < ApplicationController
   end
   
   def create
-    @comment = Comment.new(params[:comment])
-    if @comment.save
-      redirect_to comments_path
-    else
-      render :new
-    end
+    @comment = @ticket.comments.build(params[:comment])
+    @comment.user_id = current_user.id
+    @comments = @ticket.comments
+    
+    
+    @comment.save
   end
   
   def update
@@ -37,7 +40,13 @@ class CommentsController < ApplicationController
   def destroy
     @comment = Comment.find(params[:id])
     @comment.destroy
-
-    redirect_to comments_path
+    @comments = @ticket.comments
   end
+  
+private
+
+  def get_ticket
+    @ticket = Ticket.find params[:ticket_id]
+  end
+  
 end
