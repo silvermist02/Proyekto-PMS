@@ -45,6 +45,13 @@ class TicketsController < ApplicationController
     redirect_to projects_path
   end
   
+  def assign
+  	
+  end
+  
+  def log_time
+  end
+  
 private
   
   def get_projects
@@ -64,5 +71,4 @@ private
   def selected
     @selected = "project";
   end
-  
 end

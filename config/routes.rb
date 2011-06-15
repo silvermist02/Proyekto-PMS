@@ -20,6 +20,10 @@ Proyekto::Application.routes.draw do
   end
   
   resources :tickets do
+  	member do
+  		get 'assign', :to => 'tickets#assign'
+  		get 'log_time', :to => 'tickets#log_time'
+    end
     resources :comments
   end
   
