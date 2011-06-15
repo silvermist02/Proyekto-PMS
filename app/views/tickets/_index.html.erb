@@ -3,9 +3,9 @@
 <% form_tag project_tickets_path, :method => 'get', :remote=> true do %>
   <p>
   <strong>Filter Search</strong>
-  Ticket Name: <%= text_field_tag :name %>
+  Assigned Person: <%= text_field_tag :name %>
   Date: <%= text_field_tag :date, "", :class => "date_picker" %>
-  <%=  select_tag :status, options_for_select('-- Status --' => '', 'Active' => 'Active', 'Closed' => 'Closed') %>
+  <%=  select_tag :status, options_for_select('-- Status --' => '', 'Open' => 'Open', 'Assigned' => 'Assigned', 'In-Progress' => 'In-Progress', 'Resolved' => 'Resolved', 'Reopened' => 'Reopened') %>
   <%=  select_tag :priority, options_for_select('-- Priority --' => '', 'Minor' => 'Minor', 'Normal' => 'Normal', 'Major' => 'Major', 'Critical' => 'Critical') %>
   <%= submit_tag "Search", :name => nil, :date => nil, :status => nil, :priority => nil %>
   </p>
@@ -35,9 +35,15 @@
     <td><%= ticket.status %></td>
     <td><%= ticket.priority %></td>
     <td><%= ticket.tracker %></td>
-    <% @users.each do |user| %>
-			<td><%= user.full_name if user.id.eql?(ticket.assigned_to) %></td>
-		<% end %>
+		<td>
+			<% if ticket.assigned_to.nil? %>
+				none assigned
+			<% else %>
+				<% @users.each do |user| %>
+					<%= user.full_name if user.id.eql?(ticket.assigned_to) %>
+				<% end %>
+			<% end %>
+		</td>
 		<td><%= ticket.created_at.to_date %></td>
     <td><%= link_to 'Show', ticket %> | <%= link_to 'Edit', edit_ticket_path(ticket) %> | <%= link_to 'Destroy', ticket, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
