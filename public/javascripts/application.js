@@ -6,7 +6,6 @@ function proj_change_selected(index)
   $("#content_nav li a:eq(" + index + ")").attr("id", "selected");
 }
   
-
 function datepicker()
 {
   $(".date_picker").attr("readonly", "readonly")
