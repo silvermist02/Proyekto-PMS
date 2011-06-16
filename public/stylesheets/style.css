@@ -29,10 +29,14 @@ fieldset ul li {
   margin: 2px 5px;
 }
 
-h1, h2, h3  { 
+h1, h2, h3, h4  { 
   color: #001A31;
   margin: 0 0 10px;
   padding: 0 0 0 10px;
+}
+
+hr {
+  margin: 10px 0;
 }
 
 /*h1, h2 { 
@@ -286,7 +290,7 @@ fieldset {
   -webkit-border-radius: 8px;
 }
 
-#content_nav li a:hover, #extra_nav li a:hover {
+#content_nav li a:hover, #extra_nav li a:hover, .slide_selected a{
   background: #004480;
   text-decoration: none;
 }
@@ -317,9 +321,33 @@ fieldset {
   border: 1px solid #325986;
 }
 
+/********************** TICKETS PAGE **********************/
 
+.ticket_main_content {
+  height: 380px;
+}
+
+#assign_ticket_form, #log_time_form {
+  border: 1px solid #004480;
+  padding: 8px;
+  margin: 10px 0;
+  background: #f9f9f9;
+  
+  -moz-border-radius: 8px;
+  -webkit-border-radius: 8px;
+  border-radius: 8px;
+}
+
+
+#assign_ticket_form { height: 130px; }
+
+#log_time_form { height: 150px; }
 
 /********************** End MAIN CONTENT **********************/
+
+
+/********************** whoami? **********************/
+
 
 #whoami-container {
   width: 150px;
