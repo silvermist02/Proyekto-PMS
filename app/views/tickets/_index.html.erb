@@ -2,7 +2,7 @@
 
 <%= form_tag search_project_tickets_path, :method => 'get', :remote=> true do %>
   <p>
-  <strong>Filter Search</strong>
+  <h4>Filter Search</h4>
   <hr />
   Assigned Person: <%= select_tag :name, options_from_collection_for_select(@project.users, 'id', 'full_name'), {:include_blank => "-- User --"} %>
   Date: <%= text_field_tag :date, "", :class => "date_picker", :onClick => "remove_date()" %>

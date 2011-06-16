@@ -26,7 +26,7 @@
       <ul id="nav">
         <li><%= link_to "Dashboard", root_path, :id => dashboard  %></li>
         <li><%= link_to "Users", users_path, :id => user  %></li>
-        <li><%= link_to "Roles", roles_path, :id => role  %></li>
+        <!--<li><%= link_to "Roles", roles_path, :id => role  %></li>-->
         <li><%= link_to "Projects", projects_path, :id => project %></li>
         <li><%= link_to "Sign Out", destroy_user_session_path%></li>
         <% if not @projects.empty? %>

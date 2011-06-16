@@ -59,9 +59,6 @@ function render_ajax(title, content)
 }
 
 
- 
-  
-  
 
 $(function()
 {
@@ -82,7 +79,32 @@ $(function()
 
   //$("#radio-set").buttonset();
   
+  $assignTicket = $("#assign_ticket_form");
+  
+  $logTime = $("#log_time_form")
+  
+  $assignTicket .hide();
+  
+  $logTime .hide();
+  
+  
+ $("#assign_ticket_button").click(function()
+ {
+    $assignTicket.slideToggle();
+   // if(($assignTicket).is(":visible"))
+   //   $assignTicket.addClass("slide_selected");
+    //else
+    //  $assignTicket.removeClass("slide_selected");
+ });
  
+ $("#log_time_button").click(function()
+ {
+    $logTime.slideToggle();
+   // if(($logTime).is(":visible"))
+    // $logTime.addClass("slide_selected");
+    //else
+     // $assignTicket.removeClass("slide_selected");
+ });
   
   
   
