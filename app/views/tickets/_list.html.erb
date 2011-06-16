@@ -13,28 +13,28 @@
   </tr>
 
 <% @tickets.each do |ticket| %>
-  <%
-    klass = ""
-    klass = ticket.priority.eql?("Critical") ? "critical" : ""
-  %>
-  <tr class="<%= cycle("", "even")%>">
-    <td class="<%= klass %>"><%= ticket.name %></td>
-    <td><%= ticket.description %></td>
-    <td><%= ticket.status %></td>
-    <td><%= ticket.priority %></td>
-    <td><%= ticket.tracker %></td>
+	<%
+		klass = ""
+		klass = ticket.priority.eql?("Critical") ? "critical" : ""
+	%>
+	<tr class="<%= cycle("", "even")%>">
+		<td class="<%= klass %>"><%= link_to ticket.name, ticket %></td>
+		<td><%= ticket.description %></td>
+		<td><%= ticket.status %></td>
+		<td><%= ticket.priority %></td>
+		<td><%= ticket.tracker %></td>
 		<td>
-			<% if ticket.assigned_to.nil? %>
-				none assigned
-			<% else %>
-				<% @users.each do |user| %>
+			<% if ticket.assigned_to %>
+				<% @project.users.each do |user| %>
 					<%= user.full_name if user.id.eql?(ticket.assigned_to) %>
 				<% end %>
+			<% else %>
+				none
 			<% end %>
 		</td>
 		<td><%= ticket.created_at.to_date %></td>
-    <td><%= link_to 'Show', ticket %> | <%= link_to 'Edit', edit_ticket_path(ticket) %> | <%= link_to 'Destroy', ticket, :confirm => 'Are you sure?', :method => :delete, :remote => true %></td>
-  </tr>
+		<td><%= link_to 'Edit', edit_ticket_path(ticket) %> | <%= link_to 'Destroy', ticket, :confirm => 'Are you sure?', :method => :delete, :remote => true %></td>
+	</tr>
 <% end %>
 </table>
 

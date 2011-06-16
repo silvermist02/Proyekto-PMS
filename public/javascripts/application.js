@@ -19,6 +19,11 @@ function datepicker()
   }); 
 }
 
+function remove_date()
+{
+	document.getElementById("date").value = "";
+}
+
 function check_roles()
 {
   if($("#user_admin").is(":checked"))

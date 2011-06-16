@@ -46,12 +46,10 @@ class TicketsController < ApplicationController
     @project = @ticket.project
     @ticket.destroy
     
-    @tickets = @project.tickets.search(params[:date], params[:status], params[:priority])
-    @users = User.search(params[:name])
+    @tickets = @project.tickets.search(params[:name], params[:date], params[:status], params[:priority])
   end
   
   def assign
-  	@users = @project.users
   	@ticket = Ticket.find(params[:id])
   end
   
@@ -70,8 +68,7 @@ private
   end
   
   def get_index
-    @tickets = @project.tickets.search(params[:date], params[:status], params[:priority])
-    @users = User.search(params[:name])
+    @tickets = @project.tickets.search(params[:name], params[:date], params[:status], params[:priority])
   end
   
   def selected

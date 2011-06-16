@@ -3,7 +3,7 @@
 <%= form_for @ticket do |f| %>
 
   <p><%= f.label :assigned_to %>
-  <%= f.select :assigned_to, options_from_collection_for_select(@users, 'id', 'full_name') %></p>
+  <%= f.select :assigned_to, options_from_collection_for_select(@project.users, 'id', 'full_name') %></p>
 	
   <p class="submit-button right"><%= f.submit "Assign" %></p>
   

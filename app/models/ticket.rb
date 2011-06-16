@@ -5,7 +5,17 @@ class Ticket < ActiveRecord::Base
 
   validates_presence_of :name, :description, :status, :priority, :tracker, :created_by
   
-	def self.search(date, status, priority)
-		find(:all, :conditions => ['created_at LIKE ? and status LIKE ? and priority LIKE ?', "%#{date}%", "%#{status}%", "%#{priority}%"])
+  before_create :creator_assigned
+  
+  def creator_assigned
+  	self.assigned_to = self.created_by
+  end
+  
+	def self.search(name, date, status, priority)
+		if name != ""
+			find(:all, :conditions => ['assigned_to LIKE ? and created_at LIKE ? and status LIKE ? and priority LIKE ?', "%#{name}%", "%#{date}%", "%#{status}%", "%#{priority}%"])
+		else
+			find(:all)
+		end
 	end
 end

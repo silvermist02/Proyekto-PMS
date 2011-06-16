@@ -24,10 +24,6 @@ class User < ActiveRecord::Base
   def full_name
     "#{self.last_name.capitalize}, #{self.first_name.capitalize} " ##{self.middle_name[0].capitalize}.
   end
-  
-  def self.search(name)
-		find(:all, :conditions => ['first_name LIKE ? or middle_name LIKE ? or last_name LIKE ?', "%#{name}%", "%#{name}%", "%#{name}%"])
-	end
 
 	def unlock
     self.locked_at = ""
