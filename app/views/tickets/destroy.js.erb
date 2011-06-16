@@ -1,4 +1,11 @@
-$(".project_page_content").html("<%= escape_javascript(render :partial => 'tickets/index', :locals => { :project => @project } ) %>");
-$(".content_search").hide().fadeIn()
-datepicker();
-nav_change_selected(1);
+<% if not @tickets.empty? %>
+
+$("#search_content").html("<%= escape_javascript(render 'tickets/list')%>").hide().fadeIn();
+
+<% else %>
+
+$(".page_content").html("<%= escape_javascript(render 'tickets/index') %>");
+
+<% end %>
+
+

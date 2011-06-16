@@ -1,10 +1,10 @@
 
 <% if not @ticket.errors.any?%>
 
-$(".project_page_content").html("<%= escape_javascript(render :partial => 'tickets/index', :locals => { :project => @project } ) %>").hide().fadeIn();
-proj_change_selected(1);
-
-$(".project_page_content tr:last").focus();
+render_ajax("<%= @project.name %>","<%= escape_javascript(render 'tickets/index')%>");
+nav_change_selected(1);
+datepicker();
+$(".page_content tr:last").focus();
 <% else %>
 
 var emsg = "";

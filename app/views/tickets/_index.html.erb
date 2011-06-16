@@ -1,6 +1,6 @@
 <% if not @project.tickets.empty? %>
 
-<% form_tag project_tickets_path, :method => 'get', :remote=> true do %>
+<%= form_tag search_project_tickets_path, :method => 'get', :remote=> true do %>
   <p>
   <strong>Filter Search</strong>
   Assigned Person: <%= text_field_tag :name %>
@@ -10,52 +10,15 @@
   <%= submit_tag "Search", :name => nil, :date => nil, :status => nil, :priority => nil %>
   </p>
 <% end %>
+<div id="search_content">
 
-  <% if not @tickets.empty? %>
-<table class="content_search content_tbl">
-  <tr>
-    <th>Name</th>
-    <th>Description</th>
-    <th>Status</th>
-    <th>Priority</th>
-    <th>Tracker</th>
-    <th>Assigned To</th>
-    <th>Date Created</th>
-    <th></th>
-  </tr>
 
-<% @tickets.each do |ticket| %>
-  <%
-    klass = ""
-    klass = ticket.priority.eql?("Critical") ? "critical" : ""
-  %>
-  <tr class="<%= cycle("", "even")%>">
-    <td class="<%= klass %>"><%= ticket.name %></td>
-    <td><%= ticket.description %></td>
-    <td><%= ticket.status %></td>
-    <td><%= ticket.priority %></td>
-    <td><%= ticket.tracker %></td>
-		<td>
-			<% if ticket.assigned_to.nil? %>
-				none assigned
-			<% else %>
-				<% @users.each do |user| %>
-					<%= user.full_name if user.id.eql?(ticket.assigned_to) %>
-				<% end %>
-			<% end %>
-		</td>
-		<td><%= ticket.created_at.to_date %></td>
-    <td><%= link_to 'Show', ticket %> | <%= link_to 'Edit', edit_ticket_path(ticket) %> | <%= link_to 'Destroy', ticket, :confirm => 'Are you sure?', :method => :delete, :remote => true %></td>
-  </tr>
-<% end %>
-</table>
-  <% else %>
+  <%= render 'list' %>
 
-<p class="content_search content_error">No tickets matched your query.</p>
-  <% end %>
   
 <% else %>
 
-<p class="content_error">There are no tickets yet. Create one <%= link-to "here" project_tickets_path(@project)%>.</p>
+<p class="content_error">There are no tickets yet. Create one <%= link_to "here", new_project_ticket_path(@project), :remote => true %>.</p>
 
 <% end %>
+</div>
