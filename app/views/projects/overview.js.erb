@@ -1,2 +1,2 @@
-$(".project_page_content").html("<%= escape_javascript(render 'overview') %>").hide().fadeIn();
+render_ajax("<%= @project.name %>", "<%= escape_javascript(render 'overview') %>");
 nav_change_selected(0);

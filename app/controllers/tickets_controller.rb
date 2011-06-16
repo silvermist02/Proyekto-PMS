@@ -1,7 +1,8 @@
 class TicketsController < ApplicationController
   before_filter :get_projects, :selected
-  before_filter :get_project, :only => [:index, :create, :assign]
-  before_filter :get_index, :only => [:index]
+  before_filter :get_project, :only => [:index, :search, :new, :create, :assign]
+  before_filter :get_index, :only => [:index, :search]
+
   #around_filter :get_index, :only => [:create]
 
   def index
@@ -56,6 +57,10 @@ class TicketsController < ApplicationController
   
   def log_time
 		@ticket = Ticket.find(params[:id])
+  end
+  
+  def search
+  
   end
   
 private

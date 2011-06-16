@@ -58,6 +58,10 @@ class ProjectsController < ApplicationController
   def remove_member
   	@users = User.all
   end
+  
+  def search
+    @project = Project.find params[:project_id]
+  end
     
 private
   

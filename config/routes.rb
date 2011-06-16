@@ -16,18 +16,22 @@ Proyekto::Application.routes.draw do
   		get 'add_member', :to => 'projects#add_member'
   		get 'remove_member', :to => 'projects#remove_member'
     end
+    
     get 'overview', :to => 'projects#overview'
     resources :tickets do
     	member do
     		get 'assign', :to => 'tickets#assign'
     	end
+      collection do
+  		  get 'search', :to => 'tickets#search'
+      end
     end
   end
   
   resources :tickets do
   	member do
   		get 'log_time', :to => 'tickets#log_time'
-    end
+  	end
     resources :comments
   end
   

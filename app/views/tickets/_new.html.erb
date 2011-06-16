@@ -1,5 +1,5 @@
 <h3>New Ticket</h3>
 
-<%= form_for ticket, :url => project_tickets_path, :method => :post, :remote => true do |f| %>
-  <%= render :partial => 'form', :locals => { :f =>f }%>
+<%= form_for @ticket, :url => project_tickets_path, :method => :post, :remote => true do |f| %>
+  <%= render :partial => 'form', :locals => { :f => f }%>
 <% end %>

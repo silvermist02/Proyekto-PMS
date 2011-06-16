@@ -1,2 +1,2 @@
-$(".project_page_content").html("<%= escape_javascript(render :partial => 'new', :locals => { :ticket => @ticket } ) %>").hide().fadeIn();
+render_ajax("<%= @project.name %>","<%= escape_javascript(render 'new' ) %>");
 nav_change_selected(2);

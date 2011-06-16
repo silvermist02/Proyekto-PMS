@@ -54,8 +54,19 @@ function render_ajax(title, content)
 }
 
 
+ 
+  
+  
+
 $(function()
 {
+  
+  $("#content_nav li a").bind("ajax:success", function(){
+       alert("WORKKKKK!");
+       $("#loading").show();
+    });
+
+
   
   $("#project-options-list").change(function()
   {
@@ -64,7 +75,11 @@ $(function()
       window.location = loc;
   });
 
-  $("#radio-set").buttonset();
+  //$("#radio-set").buttonset();
+  
+ 
+  
+  
   
   //////////// Forms
   
