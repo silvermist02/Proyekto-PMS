@@ -1,6 +1,7 @@
 class ProjectsController < ApplicationController
   before_filter :get_projects, :selected
   before_filter :get_project, :only => [:show, :edit, :update, :destroy, :add_member, :remove_member]
+  before_filter :is_new, :only => [:new, :create]
 
   def index
     @projects = Project.all
@@ -12,18 +13,20 @@ class ProjectsController < ApplicationController
   
   def new
     @project = Project.new
+
+    render_form
   end
   
   def edit
-
+    render_form
   end
   
   def create
     @project = Project.new(params[:project])
     if @project.save
-      redirect_to projects_path
+      render_index
     else
-      render :new
+      render_form
     end
   end
   
@@ -31,16 +34,16 @@ class ProjectsController < ApplicationController
   	params[:project][:user_ids] ||= []
   		
     if @project.update_attributes(params[:project])
-      redirect_to projects_path
+      render_index
     else
-      render :edit
+      render_form
     end
   end
   
   def destroy
     @project.destroy
 
-    redirect_to projects_path
+    render_index
   end
   
   
@@ -58,16 +61,21 @@ class ProjectsController < ApplicationController
     
 private
   
-  def get_projects
-    @projects = Project.all
-  end
-  
   def get_project
     @project = Project.find params[:id]
   end
   
   def selected
     @selected = "project";
+  end
+
+  def render_index
+    get_projects
+    
+    respond_to do |format|
+      format.html { redirect_to projects_path }
+      format.js { render :index }
+    end
   end
   
 end

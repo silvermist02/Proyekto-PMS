@@ -1,6 +1,6 @@
 // Place your application-specific JavaScript functions and classes here
 // This file is automatically included by javascript_include_tag :defaults
-function proj_change_selected(index)
+function nav_change_selected(index)
 {
   $("#content_nav li a").attr("id", "");
   $("#content_nav li a:eq(" + index + ")").attr("id", "selected");
@@ -46,6 +46,13 @@ function error_dialog(msg, error_title)
 			}
 		});
 }
+
+function render_ajax(title, content)
+{
+  $("#title").html(title);
+  $(".page_content").html(content).hide().fadeIn();
+}
+
 
 $(function()
 {

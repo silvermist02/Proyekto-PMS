@@ -1,9 +1,21 @@
-
+<%= form_for @user, :remote => true do |f| %>
   <p><%= f.label :user_name %>
   <%= f.text_field :user_name %></p>
 
   <p><%= f.label :email %>
   <%= f.email_field :email %></p>
+
+  <p><%= f.label :admin %>
+  <%= f.check_box :admin %></p>
+  
+  <% if not @roles.nil? and not @roles.empty? %>
+  <div class="form_role">
+  <%= f.label "Role"%>
+  <%= f.select :role_id, options_from_collection_for_select(@roles, 'id', 'name')%>
+  </div>
+  <% end %>
+  
+  <% if not @new %>
 
   <p><%= f.label :first_name %>
   <%= f.text_field :first_name %></p>
@@ -13,9 +25,6 @@
   
   <p><%= f.label :last_name %>
   <%= f.text_field  :last_name %></p>
-  
-  <p><%= f.label :admin %>
-  <%= f.check_box :admin %></p>
 
   <p><%= f.label :password %>
   <%= f.password_field :password %></p>
@@ -23,16 +32,10 @@
   <p><%= f.label :password_confirmation %>
   <%= f.password_field :password_confirmation %></p>
   
-  <% if not @roles.nil? and not @roles.empty? %>
-  <div class="form_role">
-  <%= f.label "Role"%>
-  <%= f.select :role_id, options_from_collection_for_select(@roles, 'id', 'name')%>
-  </div>
-  <% end %>
-  
   <p><%= f.label :birthdate %>
   <%= f.text_field :birthdate, :class => "date_picker" %></p>
 
+  <% end %>
+
   <p class="submit-button right"><%= f.submit "Send" %></p>
-
-
+<% end %>

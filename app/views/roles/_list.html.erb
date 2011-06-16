@@ -1,0 +1,45 @@
+<% if not @roles.empty? %>
+
+<table class="content_tbl">
+  <tr>
+    <th rowspan="2">Name</th>
+    <th colspan="4">Projects</th>
+    <th colspan="2">Project Members</th>
+    <th colspan="6">Tickets</th>
+    <th colspan="4">Tags</th>
+  </tr>
+  <tr>
+    <th>Create</th>
+    <th>Read</th>
+    <th>Update</th>
+    <th>Delete</th>
+
+    <th>Add</th>
+    <th>Remove</th>
+    
+    <th>Create</th>
+    <th>Read</th>
+    <th>Update</th>
+    <th>Delete</th>
+    <th>Assign</th>
+    <th>Comment</th>
+    
+    <th>Create</th>
+    <th>Read</th>
+    <th>Update</th>
+    <th>Delete</th>
+  </tr>
+
+<% @roles.each do |role| %>
+  <tr class="<%= cycle("", "even")%>">
+    <td><%= role.name %></td>
+    <td><%= link_to 'Edit', edit_role_path(role), :remote => true %> | <%= link_to 'Destroy', role, :confirm => 'Are you sure?', :method => :delete, :remote => true %></td>
+  </tr>
+<% end %>
+</table>
+
+<% else %>
+
+<p class="content_error">There are no roles yet. Create one <%= link_to "here", new_role_path, :remote => true %>.</p>
+
+<% end %>

@@ -1,10 +1,9 @@
-  <p><%= f.label :name %>
+<%= form_for @role, :remote => true do |f| %>
+
+<p><%= f.label :name %>
   <%= f.text_field :name %></p>
   
-  
 <h3>Permissions</h3>
-
-
 
 <fieldset>
   <legend> Projects  </legend>
@@ -31,7 +30,6 @@
     
   </ul>
 </fieldset> 
-
 
 <fieldset>
   <legend> Tickets  </legend>  
@@ -67,3 +65,5 @@
 </fieldset>
 
 <p class="submit-button right"><%= f.submit %></p>
+
+<% end %>

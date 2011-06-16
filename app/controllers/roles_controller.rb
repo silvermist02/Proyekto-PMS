@@ -1,28 +1,30 @@
 class RolesController < ApplicationController
   before_filter :get_projects, :selected
-
-  def index
-    @roles = Role.all
-  end
+  before_filter :is_new, :only => [:new, :create]
   
-  def show
-    @role = Role.find(params[:id])
-  end 
+  def index
+    get_roles
+  end
   
   def new
     @role = Role.new
+
+    render_form
   end
   
   def edit
     @role = Role.find(params[:id])
+
+    render_form
   end
   
   def create
     @role = Role.new(params[:role])
+    
     if @role.save
-      redirect_to roles_path
+      render_index
     else
-      render :new
+      render_form
     end
   end
   
@@ -30,9 +32,9 @@ class RolesController < ApplicationController
     @role = Role.find(params[:id])
 
     if @role.update_attributes(params[:role])
-      redirect_to roles_path
+      render_index
     else
-      render :edit
+      render_form
     end
   end
   
@@ -40,17 +42,26 @@ class RolesController < ApplicationController
     @role = Role.find(params[:id])
     @role.destroy
 
-    redirect_to roles_path
+    render_index
   end
   
 private
   
-  def get_projects
-    @projects = Project.all
-  end
-  
   def selected
     @selected = "role";
+  end
+
+  def get_roles
+    @roles = Role.all
+  end
+
+  def render_index
+    get_roles
+  
+    respond_to do |format|
+      format.html { redirect_to roles_path }
+      format.js { render :index }
+    end
   end
   
 end

@@ -5,7 +5,11 @@ Proyekto::Application.routes.draw do
 
   devise_for :users, :maximum_attempts => 3, :unlock_strategy => :time, :unlock_in => 1, :controllers => { :confirmations => 'users/confirmations' }
   
-  resources :users
+  resources :users do
+    member do
+      get 'unlock', :to => 'users#unlock'
+    end
+  end
     
   resources :projects do
   	member do

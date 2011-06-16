@@ -1,0 +1,10 @@
+render_ajax("<%= @new ? "New" : "Edit" %> User","<%= escape_javascript( render :partial => 'form') %>");
+check_roles();
+datepicker();
+$("#user_admin").change(function()
+  {
+    check_roles();
+  });
+<%  position = ""
+    position = @new ? 2 : 5 %>
+nav_change_selected(<%= position %>);

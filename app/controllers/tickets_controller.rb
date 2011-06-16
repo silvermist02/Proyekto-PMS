@@ -60,10 +60,6 @@ class TicketsController < ApplicationController
   
 private
   
-  def get_projects
-    @projects = Project.all
-  end
-  
   def get_project
     @project = Project.find params[:project_id]
   end

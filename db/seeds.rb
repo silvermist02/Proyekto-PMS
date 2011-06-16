@@ -10,6 +10,7 @@ user = User.create(
   :username               => 'admin',
   :first_name             => 'admin', 
   :last_name              => 'admin',  
+  :admin                  => true,
   :email                  => 'tudorblink@gmail.com', 
   :password               => 'password', 
   :password_confirmation  => 'password', 

@@ -1,0 +1,23 @@
+<% if not @projects.empty? %>
+
+<table class="content_tbl">
+  <tr>
+    <th>Name</th>
+    <th>Description</th>
+    <th></th>
+  </tr>
+
+<% @projects.each do |project| %>
+  <tr class="<%= cycle("", "even")%>">
+    <td><%= project.name %></td>
+    <td><%= project.description %></td>
+    <td><%= link_to 'Show', project %> | <%= link_to 'Edit', edit_project_path(project), :remote => true %> | <%= link_to 'Add Member', add_member_project_path(project) %> | <%= link_to 'Remove Member', remove_member_project_path(project) %> | <%= link_to 'Destroy', project, :confirm => 'Are you sure?', :method => :delete, :remote => true %></td>
+  </tr>
+<% end %>
+</table>
+
+<% else %>
+
+  <p class="content_error">There are no projects yet. Create one <%= link_to "here", new_project_path, :remote => true %>.</p>
+
+<% end %>

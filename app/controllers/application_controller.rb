@@ -6,15 +6,25 @@ class ApplicationController < ActionController::Base
   def index
 
   end
+
+protected
   
-private
   
+private 
   def get_projects
     @projects = Project.all
   end
   
   def selected
     @selected = "dashboard";
+  end
+
+  def render_form
+    render :form
+  end
+
+  def is_new
+    @new = true
   end
   
 end

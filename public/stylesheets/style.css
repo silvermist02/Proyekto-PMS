@@ -13,7 +13,7 @@ body {
 a {
   color: #004480;
   text-decoration: none;
-} 
+} c
 
 a:hover {
   text-decoration: underline;
@@ -247,13 +247,13 @@ fieldset {
   margin: 10px 0 0 0;
 }
 
-.critical {
+.critical, .critical a {
   color: #ff0000;
 }
 
-.content_search { margin: 20px auto; }
+.content_search, .content_error { margin: 20px auto; }
 
-.content_error { width: 300px; }
+.content_error { width: 500px; text-align: center;}
 
 /********************** PROJECTS PAGE **********************/
 

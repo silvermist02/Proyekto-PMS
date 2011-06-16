@@ -1,4 +1,4 @@
-
+<%= form_for @project, :remote => true do |f| %>
   <p><%= f.label :name %>
   <%= f.text_field :name %></p>
 
@@ -9,5 +9,5 @@
   <%=  f.select :status, options_for_select('Active' => 'Active', 'Closed' => 'Closed') %></p>
 
   <p class="submit-button right"><%= f.submit %></p>
-
+<% end %>
 

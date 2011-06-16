@@ -1,35 +1,21 @@
 <div class="grid_12">
 
-<h2>Projects</h2>
+<h2 id="title">Projects</h2>
 
 <ul id="content_nav">
 
-  <li><%= link_to "All Projects", "#", :id => "selected", :remote => true %></li>
+  <li><%= link_to "All Projects", projects_path, :id => "selected", :remote => true %></li>
   
-  <li><%= link_to "Create Project", "#", :remote => true %></li>
+  <li><%= link_to "Create Project", new_project_path, :remote => true %></li>
   
 </ul>
 </div>
 
 <div class="clear"></div>
 
+<div class="page_content grid_12">
 
-<table class="content_tbl">
-  <tr>
-    <th>Name</th>
-    <th>Description</th>
-    <th></th>
-  </tr>
+<%= render 'list' %>
 
-<% @projects.each do |project| %>
-  <tr class="<%= cycle("", "even")%>">
-    <td><%= project.name %></td>
-    <td><%= project.description %></td>
-    <td><%= link_to 'Show', project %> | <%= link_to 'Edit', edit_project_path(project) %> | <%= link_to 'Add Member', add_member_project_path(project) %> | <%= link_to 'Remove Member', remove_member_project_path(project) %> | <%= link_to 'Destroy', project, :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
-<% end %>
-</table>
+</div>
 
-<br />
-
-<%= link_to 'New Project', new_project_path %>

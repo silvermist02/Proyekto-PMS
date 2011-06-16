@@ -1,2 +1,2 @@
-$(".project_page_content").html("<%= escape_javascript(render :partial => 'overview', :locals => { :project => @project } ) %>").hide().fadeIn();
-proj_change_selected(0);
+$(".project_page_content").html("<%= escape_javascript(render 'overview') %>").hide().fadeIn();
+nav_change_selected(0);
