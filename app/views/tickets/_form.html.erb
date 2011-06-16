@@ -6,7 +6,7 @@
   <%= f.text_field :description %></p>
   
   <p><%= f.label :status %>
-  <%=  f.select :status, options_for_select('Active' => 'Active', 'Closed' => 'Closed') %></p>
+  <%=  f.select :status, options_for_select('Open' => 'Open', 'Assigned' => 'Assigned', 'In-Progress' => 'In-Progress', 'Resolved' => 'Resolved', 'Reopened' => 'Reopened') %></p>
 
   <p><%= f.label :priority %>
   <%=  f.select :priority, options_for_select('Minor' => 'Minor', 'Normal' => 'Normal', 'Major' => 'Major', 'Critical' => 'Critical') %></p>

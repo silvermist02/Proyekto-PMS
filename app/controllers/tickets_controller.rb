@@ -1,6 +1,6 @@
 class TicketsController < ApplicationController
   before_filter :get_projects, :selected
-  before_filter :get_project, :only => [:index, :create]
+  before_filter :get_project, :only => [:index, :create, :assign]
   before_filter :get_index, :only => [:index]
   #around_filter :get_index, :only => [:create]
 
@@ -50,7 +50,7 @@ class TicketsController < ApplicationController
   end
   
   def assign
-  	@users = User.all
+  	@users = @project.users
   	@ticket = Ticket.find(params[:id])
   end
   
