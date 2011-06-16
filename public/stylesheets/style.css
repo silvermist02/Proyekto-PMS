@@ -255,22 +255,26 @@ fieldset {
 
 .content_error { width: 500px; text-align: center;}
 
+.members_tbl {
+  margin: 40px 0 0 0;
+}
+
 /********************** PROJECTS PAGE **********************/
 
 /********************** Navigation **********************/
 
-#content_nav {
+#content_nav, #extra_nav {
   margin: -44px 20px 10px 0;
   float: right;
 }
 
-#content_nav li {
+#content_nav li, #extra_nav li {
   list-style: none;
   float: left;
   margin: 4px 15px;
 }
 
-#content_nav li a {
+#content_nav li a, #extra_nav li a {
   display: block;
   width: 100%;
   color:  #fff;
@@ -282,16 +286,38 @@ fieldset {
   -webkit-border-radius: 8px;
 }
 
-#content_nav li a:hover {
+#content_nav li a:hover, #extra_nav li a:hover {
   background: #004480;
   text-decoration: none;
 }
 
-#content_nav #selected {
+#content_nav #selected, #extra_nav #selected {
   color: #004480;
   background: #fff;
   border: 1px solid #004480;
 }
+
+
+
+#extra_nav {
+  margin: 0px 20px 10px 0;
+}
+
+
+#extra_nav li a {
+  background: #004480;
+}
+
+#extra_nav li a:hover {
+  background: #325986;
+}
+
+#extra_nav #selected {
+  color: #325986;
+  border: 1px solid #325986;
+}
+
+
 
 /********************** End MAIN CONTENT **********************/
 

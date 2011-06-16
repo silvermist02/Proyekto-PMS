@@ -1,7 +1,8 @@
 class ProjectsController < ApplicationController
   before_filter :get_projects, :selected
-  before_filter :get_project, :only => [:show, :edit, :update, :destroy, :add_member, :remove_member]
+  before_filter :get_project, :only => [:show, :edit, :update, :destroy, :add_member, :remove_member, :members, :members_update]
   before_filter :is_new, :only => [:new, :create]
+  before_filter :get_members, :only => [:members, :add_members, :remove_members, :members_update]
 
   def index
     @projects = Project.all
@@ -52,15 +53,35 @@ class ProjectsController < ApplicationController
   end
   
   def add_member
-  	@users = User.all
+  	@add = true
+  	get_members
+  	
+  	render_member_form
   end
   
   def remove_member
-  	@users = User.all
+    get_members
+  
+  	render_member_form
   end
   
   def search
     @project = Project.find params[:project_id]
+  end
+  
+  def members
+    get_members
+  end
+  
+  def members_update
+  	params[:project][:user_ids] ||= []
+  	
+  	puts @project.inspect
+  	puts"########################################################"	
+    @project.update_attributes(params[:project])
+    
+   
+    render :members
   end
     
 private
@@ -80,6 +101,15 @@ private
       format.html { redirect_to projects_path }
       format.js { render :index }
     end
+  end
+  
+  def render_member_form
+    @users = User.all
+  	render 'member_actions'
+  end
+  
+  def get_members
+    @members = @project.users
   end
   
 end

@@ -1,0 +1,19 @@
+<table class="content_tbl members_tbl">
+  <tr>
+    <th>Name</th>
+    <th>Role</th>
+  </tr>
+  
+  <% @members.each do |m| %>
+
+  <tr class="<%= cycle("", "even")%>">
+  
+    <td><%= m.full_name%></td>
+    <td></td>
+  
+  </tr>
+
+  <% end %>
+
+</table>
+

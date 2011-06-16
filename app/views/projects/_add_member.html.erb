@@ -1,0 +1,42 @@
+<ul id="extra_nav">
+
+  <li><%= link_to 'Add Members', add_member_project_path(@project), :remote => true %></li>
+  
+  <% if not @members.empty? %>
+  <li><%= link_to 'Remove Members', remove_member_project_path(@project), :remote => true %></li>
+  <% end %>
+  
+</ul>
+<% puts @project.inspect
+puts"########################################################11111111111"	
+   %>
+   
+<% if @project.users.length != @users.length %>   
+   
+<h3>Add Project Members</h3>
+
+<%= form_for @project, :url => members_update_project_path(@project), :remote => true  do |f| %>
+
+  <p>
+		<% @users.each do |user| %>
+			<% unless @project.users.include?(user) or user.id == 1 %>
+				<div>
+					<%= check_box_tag "project[user_ids][]", user.id %>
+					<%= user.last_name %>
+				</div>
+			<% else %>
+				<%= hidden_field_tag "project[user_ids][]", user.id %>
+			<% end %>
+		<% end %>
+	</p>
+
+  <p class="submit-button right"><%= f.submit "Add" %></p>
+
+<% end %>
+<% puts @project.inspect %>
+
+<% else %>
+
+<p class="content_error">All users have been added to this project.</p>
+
+<% end %>
