@@ -19,13 +19,13 @@ puts"########################################################11111111111"
 
   <p>
 		<% @users.each do |user| %>
-			<% unless @project.users.include?(user) or user.id == 1 %>
+			<% unless @project.users.include?(user) or user.id.eql?(1) %>
 				<div>
 					<%= check_box_tag "project[user_ids][]", user.id %>
 					<%= user.last_name %>
 				</div>
 			<% else %>
-				<%= hidden_field_tag "project[user_ids][]", user.id %>
+				<%= hidden_field_tag "project[user_ids][]", user.id unless user.id.eql?(1) %>
 			<% end %>
 		<% end %>
 	</p>
