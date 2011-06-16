@@ -3,6 +3,8 @@ class UsersController < ApplicationController
   before_filter :get_roles, :only => [:new, :edit, :create, :update]
   before_filter :get_user, :only => [:edit, :update, :unlock]
   before_filter :is_new, :only => [:new, :create]
+  load_and_authorize_resource
+
   
   def index
     get_users
@@ -16,11 +18,12 @@ class UsersController < ApplicationController
   
   def create
     @user = User.new params[:user]
-    @user.first_name = "Hi"
-	  @user.middle_name = @user.user_name
-	  @user.last_name = @user.user_name
-	  @user.password = @user.user_name
-	  @user.password_confirmation = @user.user_name
+    @user.first_name = "proyekto"
+	  @user.middle_name = "proyekto"
+	  @user.last_name = "proyekto"
+	  @user.password = "proyekto"
+	  @user.password_confirmation = "proyekto"
+
     
     if @user.save
       render_index
@@ -52,10 +55,14 @@ class UsersController < ApplicationController
   end
     
   def unlock
-    @user.locked_at = nil
+    @user.locked_at ||= nil
     @user.update_attributes(params[:user])
 
     redirect_to users_path
+  end
+
+  def locked
+    @user = User.locked
   end
  
 private

@@ -13,6 +13,7 @@
   </tr>
 
 <% @tickets.each do |ticket| %>
+  
 	<%
 		klass = ""
 		klass = ticket.priority.eql?("Critical") ? "critical" : ""

@@ -6,9 +6,9 @@
 
   <li><%= link_to "Overview", "#", :id => "selected", :remote => true %></li>
   
-  <li><%= link_to "Assign", "#", :id => "assign_ticket_button", %></li>
+  <li><%= link_to "Assign", "#", :id => "assign_ticket_button"%></li>
   
-  <li><%= link_to "Log Time", "#", :id => "log_time_button", %></li>
+  <li><%= link_to "Log Time", "#", :id => "log_time_button"%></li>
   
   <li><%= link_to "Edit Ticket", "#", :remote => true %></li>
   
@@ -46,14 +46,20 @@
 <h4>Assign Ticket</h4>
 
 <hr/>
-
+<% if not @ticket.project.users.empty? %>
 <%= form_for @ticket do |f| %>
 
   <p><%= f.label :assigned_to %>
   <%= f.select :assigned_to, options_from_collection_for_select(@ticket.project.users, 'id', 'full_name') %></p>
 	
   <p class="submit-button right"><%= f.submit "Assign" %></p>
-  
+
+<% end %>
+
+<% else %>
+
+<p>Project has no members yet.</p>
+
 <% end %>
 
 </div>
@@ -86,7 +92,6 @@
 
 <div class="grid_12">
 
->>>>>>> 4b3cac7c28bb2230bd4ac733c61631ba7ae30c1f
 <%if not @comments.empty? %>
 <br/>
 <h3>Comments</h3> 

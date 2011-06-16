@@ -1,6 +1,7 @@
 class RolesController < ApplicationController
   before_filter :get_projects, :selected
   before_filter :is_new, :only => [:new, :create]
+  load_and_authorize_resource
   
   def index
     get_roles

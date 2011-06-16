@@ -1,6 +1,7 @@
 class CommentsController < ApplicationController
   
   before_filter :get_ticket
+  load_and_authorize_resource
 
   def index
     @comments = Comment.all
