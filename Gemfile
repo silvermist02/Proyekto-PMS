@@ -20,7 +20,7 @@ gem 'will_paginate'
 gem 'annotate'
 gem 'acts-as-taggable-on'
 #gem 'geomap', '0.0.10'
-#gem 'exception_notification', :require => 'exception_notifier'
+gem 'exception_notification', :require => 'exception_notifier'
 #gem 'ckeditor', :git => 'git://github.com/galetahub/rails-ckeditor.git', :branch => 'rails3'
 
 #gem 'haml-rails'
@@ -38,23 +38,23 @@ gem 'acts-as-taggable-on'
 
 # Bundle the extra gems:
 # gem 'bj'
-#gem 'nokogiri'
+gem 'nokogiri'
 # gem 'sqlite3-ruby', :require => 'sqlite3'
 # gem 'aws-s3', :require => 'aws/s3'
 
 # Bundle gems for the local environment. Make sure to
 # put test-only gems in this group so their generators
 # and rake tasks are available in development mode:
-# group :development, :test do
-#   gem 'webrat'
-#  group :cucumber do
-#    gem 'rspec-rails', '~> 2.6.1'
- #   gem 'capybara'
- #   gem 'database_cleaner'
- #   gem 'cucumber-rails'
- #   gem 'cucumber'
-   #\ gem 'factory_girl_rails', :git => 'git://github.com/thoughtbot/factory_girl_rails.git'
-  #  gem 'spork'
-  #  gem 'launchy'
- # end
- #end
+ group :development, :test do
+  gem 'webrat'
+  group :cucumber do
+   gem 'rspec-rails', '~> 2.6.1'
+   gem 'capybara'
+    gem 'database_cleaner'
+   gem 'cucumber-rails'
+   gem 'cucumber'
+    gem 'factory_girl_rails', :git => 'git://github.com/thoughtbot/factory_girl_rails.git'
+   gem 'spork'
+    gem 'launchy'
+ end
+end
