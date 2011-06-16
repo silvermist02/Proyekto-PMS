@@ -13,5 +13,8 @@
   
   <p><%= f.label :tracker %>
   <%=  f.select :tracker, options_for_select('Bug' => 'Bug', 'Task' => 'Task') %></p>
+  
+  <p><%= f.label :tag_list %>
+  <%= f.text_field :tag_list %></p>
 
   <p class="submit-button right"><%= f.submit %></p>
