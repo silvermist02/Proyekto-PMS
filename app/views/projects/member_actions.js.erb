@@ -1,0 +1,5 @@
+<% 
+  mform = ""
+  mform = @add ? 'add_member' : 'remove_member' %>
+
+$(".page_content").html("<%= escape_javascript(render mform) %>").hide().fadeIn();

@@ -1,0 +1,22 @@
+<% if not @members.empty? %>
+
+<ul id="extra_nav">
+
+  <li><%= link_to 'Add Members', add_member_project_path(@project), :remote => true %></li>
+  
+  <li><%= link_to 'Remove Members', remove_member_project_path(@project), :remote => true %></li>
+  
+</ul>
+
+
+<div id="member_form">
+
+<%= render 'member_list'%>
+
+</div>
+
+<% else %>
+
+<p class="content_error">This project has no members yet. Add one <%= link_to "here", add_member_project_path(@project), :remote => true %>.</p>
+
+<% end %>
