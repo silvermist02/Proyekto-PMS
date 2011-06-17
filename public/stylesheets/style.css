@@ -546,3 +546,5 @@ fieldset {
 
 #ticket-search form { width: 100% };
 
+#unauthorized { display: none; }
+
