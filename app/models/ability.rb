@@ -7,7 +7,7 @@ class Ability
     else
       can :read, Comment
       can [:read, :update], User
-      can :members, Project
+      can [:members, :overview], Project
       
       role = Role.find(user.role_id)
         can :add_member, Project  if role.member_add
