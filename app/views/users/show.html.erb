@@ -2,6 +2,8 @@
 
 <h2><%= @user.full_name %></h2>
 
+<p><span class="info_label">User Name</span><%= @user.user_name %></p>
+
 <p><span class="info_label">First Name</span><%= @user.first_name %></p>
 
 <p><span class="info_label">Middle Name</span><%= @user.middle_name %></p>
@@ -14,4 +16,5 @@
 
 <p><span class="info_label">Birthdate</span><%= @user.birthdate %></p>
 
+<%= link_to "Edit Profile", edit_user_path(@user) if current_user.eql?(@user) or current_user.admin %>
 </div>

@@ -19,11 +19,7 @@ protected
 private 
   def get_projects
     if user_signed_in?
-      if current_user.admin
-        @projects = Project.all
-      else
-        @projects = current_user.projects
-      end
+      @projects = current_user.projects
     else
       @projects = []
     end

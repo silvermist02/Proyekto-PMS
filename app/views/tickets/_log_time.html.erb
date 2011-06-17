@@ -1,0 +1,33 @@
+<h4>Time spent on Ticket</h4>
+
+<% if not @ticket.assigned_to.nil? %>
+
+  <% if @ticket.assigned_to.eql? current_user.id %>
+
+
+<hr/>
+
+<%= form_for @ticket, :remote => true do |f| %>
+
+  <p><%= f.label "Time" %>
+  <%= f.text_field :logged_time, :readonly => "readonly"%></p>
+  <div id="slider-range-min"></div>
+	
+  <p class="submit-button right"><%= f.submit "Log" %></p>
+  
+<% end %>
+
+<script type="text/javascript">
+  log_slider("<%= @ticket.logged_time %>");
+</script>
+  <% else %>
+  
+<p>You are not assigned to this ticket.</p>
+
+  <% end %>
+
+<% else %>
+
+<p>This ticket has not yet been assigned to anyone.</p>
+
+<% end %>

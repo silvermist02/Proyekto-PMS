@@ -13,6 +13,7 @@ class Ticket < ActiveRecord::Base
   scope :search_index, :conditions => ['status != ?', 'Resolved']
   scope :resolved, :conditions => ['status = ?', 'Resolved']
   scope :open, :conditions => ['status = ?', 'Open']
+  scope :critical, :conditions => ['priority = ?', 'Critical']
     
   def creator_assigned
   	self.assigned_to = self.created_by
@@ -27,6 +28,6 @@ class Ticket < ActiveRecord::Base
 	end
 
 	def set_logged_time
-    self.logged_time = "0hour/s"
+    self.logged_time = "0 hour/s"
 	end
 end

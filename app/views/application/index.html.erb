@@ -7,8 +7,11 @@
   <li><%= link_to "Manage Projects", projects_path, :id => "manage_proj" %></li>
 </ul>
 
-<% else %>
+<% end %>
   <% unless current_user.projects.empty? %>
+<div class="clearfix"></div>
+
+<div>
     <h3>Your Projects</h3>
   <%= render 'projects/list' %>
 
@@ -17,7 +20,5 @@
   <p>You have no projects yet.</p>
 
   <% end %>
-
-<% end %>
-
+</div>
 </div>

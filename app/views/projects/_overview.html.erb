@@ -6,11 +6,17 @@
 
 <% if not @project.tickets.empty? %>
 
-<p><span class="info_label">Total no.</span><%= @project.tickets.size %></p>
+<p><span class="info_label">Total</span><%= @project.tickets.size %></p>
 
 <p><span class="info_label">Open</span><%= @project.tickets.open.size %></p>
 
 <p><span class="info_label">Resolved</span><%= @project.tickets.resolved.size %></p>
+
+<% if not @project.tickets.critical.empty? %>
+
+<p class="critical"><span class="info_label">Critical</span><%= @project.tickets.critical.size %></p>
+
+<% end %>
 
 <p><span class="info_label">Total Log Time</span><%= @project.total_log_time %></p>
 

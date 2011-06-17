@@ -163,15 +163,24 @@ form label:after {
   content: ":"
 }
 
-form input[type=text], form input[type=email], form input[type=password], select {
+form input[type=text], form input[type=email], form input[type=password], select, textarea {
   border: 1px solid #d3d3dd;
   background: #f1f1f1;
   padding: 4px;
+  width: 200px;
 }
 
-form input[type=text]:focus, form input[type=email]:focus, form input[type=password]:focus, select:focus {
+form input[type=text]:focus, form input[type=email]:focus, form input[type=password]:focus, select:focus, textarea:focus {
   border: 1px solid #313131;
   background: #fdfdfd;
+}
+
+textarea {
+  height: 100px;
+}
+
+select {
+  width: 150px;
 }
 
 form input[type=submit] {
@@ -255,12 +264,23 @@ fieldset {
   color: #ff0000;
 }
 
-.content_search, .content_error { margin: 20px auto; }
+.content_search, .content_error { margin: 50px auto; }
 
 .content_error { width: 500px; text-align: center;}
 
 .members_tbl {
   margin: 40px 0 0 0;
+}
+
+#roles_tbl th {
+  background:  #004480;
+  font-size: 10px;
+  text-align: center;
+}
+
+.green { 
+  color: #508850;
+  background: #efefef;  
 }
 
 /********************** PROJECTS PAGE **********************/
@@ -448,7 +468,7 @@ fieldset {
 /********************** Admin Index **********************/
 
 #admin_nav {
-  margin: auto;
+  margin: -45px auto;
   width:730px;
 }
 
@@ -504,7 +524,8 @@ fieldset {
 #comment_submit {
   float: right;
 }
-.user-comment {
+
+.comment-list li {
   padding: 18px;
   border: 1px solid #001A31;
   margin: 10px 0;
@@ -515,10 +536,8 @@ fieldset {
   font: italic 12px Arial;
 }
 
-#roles_tbl th {
-
-  background:  #004480;
-  font-size: 10px;
-  text-align: center;
-
+.user-comment {
+  border: 1px solid #e3e3e3;
+  background: #e3e3e3;
 }
+

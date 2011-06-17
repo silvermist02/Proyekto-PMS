@@ -13,6 +13,11 @@ class TicketsController < ApplicationController
     @comments = @ticket.comments
 
     get_users
+    
+    respond_to do |format|
+      format.html { render 'show' }
+      format.js { render 'update' }
+    end
   end
   
   def new

@@ -6,7 +6,11 @@ class ProjectsController < ApplicationController
   load_and_authorize_resource
 
   def index
-    get_projects
+    if current_user.admin
+      @projects = Project.all
+    else
+      get_projects
+    end
     #User.tag_counts.order('count DESC').limit(5).where('tags.name LIKE ?', params[:query]) 
   end
   
@@ -34,8 +38,6 @@ class ProjectsController < ApplicationController
   end
   
   def update
-  	params[:project][:user_ids] ||= []
-  		
     if @project.update_attributes(params[:project])
       render_index
     else
@@ -76,13 +78,14 @@ class ProjectsController < ApplicationController
   end
   
   def members_update
-  	params[:project][:user_ids] ||= []
+    if params[:project].nil?
+      @project.users.clear
+    else
+  	  params[:project][:user_ids] ||= []
+  	end
   	
-  	puts @project.inspect
-  	puts"########################################################"	
     @project.update_attributes(params[:project])
-    
-   
+
     render :members
   end
     

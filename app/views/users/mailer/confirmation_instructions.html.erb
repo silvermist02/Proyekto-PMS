@@ -1,5 +1,11 @@
 <p>Welcome <%= @resource.email %>!</p>
 
+<p>Please change your profile information upon confirming your account.</p>
+
+<p>Your default password is "proyekto". It is advised that you change this password.</p>
+
+<p>Note that you cannot log in to the system unless you confirm your account.</p>
+
 <p>You can confirm your account through the link below:</p>
 
 <p><%= link_to 'Confirm my account', confirmation_url(@resource, :confirmation_token => @resource.confirmation_token) %></p>
