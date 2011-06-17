@@ -4,9 +4,9 @@
 
 <ul id="content_nav">
 
-  <li><%= link_to "All Projects", projects_path, :id => "selected", :remote => true %></li>
+  <li><%= link_to "All Projects", projects_path, :id => "selected", :remote => true if can? :read, Project %></li>
   
-  <li><%= link_to "Create Project", new_project_path, :remote => true %></li>
+  <li><%= link_to "Create Project", new_project_path, :remote => true if can? :create, Project %></li>
   
 </ul>
 </div>

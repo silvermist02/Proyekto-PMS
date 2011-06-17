@@ -25,12 +25,17 @@
       
       <ul id="nav">
         <li><%= link_to "Home", root_path, :id => dashboard  %></li>
+        
         <% if current_user.admin %>
         <li><%= link_to "Users", users_path, :id => user  %></li>
         <% else %>
         <li><%= link_to "Profile", user_path(current_user), :id => user %></li>
         <% end %>
+        
+        <% if can? :read, Project %>
         <li><%= link_to "Projects", projects_path, :id => project %></li>
+        <% end %>
+        
         <li><%= link_to "Sign Out", destroy_user_session_path%></li>
         <% if not @projects.empty? %>
         <li>
@@ -45,7 +50,7 @@
       </ul>  
       <% else %>
       <ul id="nav">
-        <li><%= link_to "Sign In", root_path%></li>
+        <li><%= link_to "Welcome to Proyekto", "#"%></li>
       </ul>
       <% end %>
     </div>
@@ -56,6 +61,7 @@
   <div id="whoami-container">
     <div id="whoami-content">
       <span><small>You are: </small><br/><%= link_to current_user.email.truncate(22), user_path(current_user)%></span>
+      <br/><%= current_user.role_name.truncate(22) %>
     </div>
     <div id="whoami">
       <span>&raquo; whoami?</span>

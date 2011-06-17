@@ -14,7 +14,9 @@
   <p><%= f.label "Type" %>
   <%=  f.select :tracker, options_for_tracker(false) %></p>
   
+  <% if can? [:create, :update], Tag %>
   <p><%= f.label :tag_list %>
   <%= f.text_field :tag_list %></p>
+  <% end %>
 
   <p class="submit-button right"><%= f.submit %></p>

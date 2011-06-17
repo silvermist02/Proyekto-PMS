@@ -11,16 +11,15 @@
 <p>Uncheck the members you want to remove from this project.</p>
 <%= form_for @project, :url => members_update_project_path(@project), :remote => true do |f| %>
 
-  <p>
+
 		<% @users.each do |user| %>
 			<% if @project.users.include?(user)%> <!--  and user.id != 1 -->
-				<div>
+				<p>
 					<%= check_box_tag "project[user_ids][]", user.id, @project.users.include?(user) %>
 					<%= user.last_name %>
-				</div>
+				</p>
 			<% end %>
 		<% end %>
-	</p>
 
   <p class="submit-button right"><%= f.submit "Remove" %></p>
 

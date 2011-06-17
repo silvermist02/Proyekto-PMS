@@ -6,7 +6,8 @@ class Ability
       can :manage, :all
     else
       can :read, Comment
-      can [:read, :update], User if user.eql? user
+      can [:read, :update], User
+      can :members, Project
       
       role = Role.find(user.role_id)
         can :add_member, Project  if role.member_add

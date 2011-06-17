@@ -2,9 +2,9 @@
 
 <ul id="extra_nav">
 
-  <li><%= link_to 'Add Members', add_member_project_path(@project), :remote => true %></li>
+  <li><%= link_to 'Add Members', add_member_project_path(@project), :remote => true if can? :add_member, Project %></li>
   
-  <li><%= link_to 'Remove Members', remove_member_project_path(@project), :remote => true %></li>
+  <li><%= link_to 'Remove Members', remove_member_project_path(@project), :remote => true if can? :remove_member, Project %></li>
   
 </ul>
 
@@ -17,6 +17,10 @@
 
 <% else %>
 
-<p class="content_error">This project has no members yet. Add one <%= link_to "here", add_member_project_path(@project), :remote => true %>.</p>
+<p class="content_error">This project has no members yet. 
+<% if can? :add_member, Project %> 
+Add one <%= link_to "here", add_member_project_path(@project), :remote => true %>.
+<% end %>
+</p>
 
 <% end %>

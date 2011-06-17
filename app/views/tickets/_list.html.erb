@@ -37,7 +37,7 @@
 		<td><%= ticket.logged_time %></td>
 		<td><%= ticket.created_at.to_date %></td>
 		
-		<td><%= link_to 'Delete', ticket, :confirm => 'Are you sure?', :method => :delete, :remote => true %></td>
+		<td><%= link_to 'Delete', ticket, :confirm => 'Are you sure?', :method => :delete, :remote => true if can? :delete, Ticket %></td>
 	</tr>
 <% end %>
 </table>

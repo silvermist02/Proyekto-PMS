@@ -79,20 +79,7 @@ function log_slider(default_val)
 $(function()
 {
   
-  $("#content_nav li a").live("ajax:complete", function(){
-       alert("WORKKKKK!");
-       $("#loading").show();
-    });
 
-  $("#content_nav li a")
-      .bind('ajax:beforeSend', function() {alert("loading!");})
-      .bind('ajax:success', function(data, status, xhr) {alert("success!");})
-      .bind('ajax:failure', function(xhr, status, error) {alert("failure!");})
-      .bind('ajax:complete', function() {alert("complete!");});
-
-
-
-  
   $("#project-options-list").change(function()
   {
     loc = $(this).val();
@@ -140,30 +127,7 @@ $(function()
 
   /////////// Ripped from Articulos
   
- /* $commentFormBody = $("#comment-form-body");
-  if($commentFormBody.val() == "")
-    $commentFormBody.val("Write your comment here...");
-  
-  
-  $commentFormBody.focus(function()
-  {
-    if($(this).val() == "Write your comment here...")
-      $(this).val(null);
-  }).blur(function()
-  {
-    if($(this).val().trim() == "")
-      $(this).val("Write your comment here...");
-  });
-  
-  $("#comment_new").submit(function()
-  {
-    $textarea = $(this).find("textarea");
-    if($textarea.val() == "Write your comment here...")
-      $textarea.val() = "";
-      
-    return true;
-    
-  });*/
+
 
   $("#whoami span").click(function()
   {
@@ -196,3 +160,41 @@ $(function()
   datepicker(); 
 
 });
+
+ /* $commentFormBody = $("#comment-form-body");
+  if($commentFormBody.val() == "")
+    $commentFormBody.val("Write your comment here...");
+  
+  
+  $commentFormBody.focus(function()
+  {
+    if($(this).val() == "Write your comment here...")
+      $(this).val(null);
+  }).blur(function()
+  {
+    if($(this).val().trim() == "")
+      $(this).val("Write your comment here...");
+  });
+  
+  $("#comment_new").submit(function()
+  {
+    $textarea = $(this).find("textarea");
+    if($textarea.val() == "Write your comment here...")
+      $textarea.val() = "";
+      
+    return true;
+    
+  });
+  
+    $("#content_nav li a").live("ajax:complete", function(){
+       alert("WORKKKKK!");
+       $("#loading").show();
+    });
+
+  $("#content_nav li a")
+      .bind('ajax:beforeSend', function() {alert("loading!");})
+      .bind('ajax:success', function(data, status, xhr) {alert("success!");})
+      .bind('ajax:failure', function(xhr, status, error) {alert("failure!");})
+      .bind('ajax:complete', function() {alert("complete!");});
+  
+  */

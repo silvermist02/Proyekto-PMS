@@ -12,11 +12,17 @@
 
   <li><%= link_to "Overview", @ticket, :id => "selected", :remote => true %></li>
   
+  <% if can? :assign, Ticket %>
   <li><%= link_to "Assign", "#", :id => "assign_ticket_button"%></li>
+  <% end %>
   
+  <% if @ticket.assigned_to.eql? current_user.id %>
   <li><%= link_to "Log Time", "#", :id => "log_time_button"%></li>
+  <% end %>
   
+  <% if can? :edit, Ticket %>
   <li><%= link_to "Edit Ticket", edit_ticket_path(@ticket), :remote => true %></li>
+  <% end %>
   
   <li><%= link_to "Back to Project", project_path(@ticket.project) %></li>
   
@@ -105,13 +111,13 @@
 <% else %>
 <div class="comment-list">
   <% if user_signed_in? %>
-  <p>No comments yet. <%= link_to 'Write a comment', "#comment-form", :id => "add-comment"%></p>
+  <p>No comments yet. <%= link_to 'Write a comment', "#comment-form", :id => "add-comment" if can? :create, Comment %></p>
   <% end %>
 </div>
 <% end %>
   
 
-<%= render :partial => 'comments/newform' %>   
+<%= render :partial => 'comments/newform' if can? :create, Comment %>   
 
 </div>
 

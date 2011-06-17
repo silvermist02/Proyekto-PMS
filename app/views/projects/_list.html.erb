@@ -11,8 +11,8 @@
   <tr class="<%= cycle("", "even")%>">
     <td><%= link_to project.name.truncate(30), project %></td>
     <td><%= project.description.truncate(60) %></td>
-    <td><%= link_to 'Edit', edit_project_path(project), :remote => true %> |
-     <%= link_to 'Delete', project, :confirm => 'Are you sure?', :method => :delete, :remote => true %></td>
+    <td><%= link_to 'Edit', edit_project_path(project), :remote => true if can? :edit, Project %> 
+     <%= link_to 'Delete', project, :confirm => 'Are you sure?', :method => :delete, :remote => true if can? :delete, Project %></td>
   </tr>
 <% end %>
 </table>
