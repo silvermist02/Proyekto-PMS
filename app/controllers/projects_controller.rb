@@ -3,9 +3,11 @@ class ProjectsController < ApplicationController
   before_filter :get_project, :only => [:show, :edit, :update, :destroy, :add_member, :remove_member, :members, :members_update]
   before_filter :is_new, :only => [:new, :create]
   before_filter :get_members, :only => [:members, :add_members, :remove_members, :members_update]
+  load_and_authorize_resource
 
   def index
     @projects = Project.all
+    #User.tag_counts.order('count DESC').limit(5).where('tags.name LIKE ?', params[:query]) 
   end
   
   def show

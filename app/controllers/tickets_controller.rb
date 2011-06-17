@@ -1,12 +1,11 @@
 class TicketsController < ApplicationController
   before_filter :get_projects, :selected
   before_filter :get_project, :only => [:index, :search, :new, :create, :assign]
-  before_filter :get_index, :only => [:index, :search]
+  load_and_authorize_resource
 
-  #around_filter :get_index, :only => [:create]
 
   def index
-
+    @tickets = @project.tickets.search_index
   end
   
   def show
@@ -46,7 +45,7 @@ class TicketsController < ApplicationController
     @project = @ticket.project
     @ticket.destroy
     
-    @tickets = @project.tickets.search(params[:name], params[:date], params[:status], params[:priority])
+    get_index
   end
   
   def assign
@@ -58,7 +57,7 @@ class TicketsController < ApplicationController
   end
   
   def search
-  
+    get_index
   end
   
 private

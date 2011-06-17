@@ -7,11 +7,8 @@
   <% end %>
   
 </ul>
-<% puts @project.inspect
-puts"########################################################11111111111"	
-   %>
    
-<% if @project.users.length != @users.length %>   
+<% if @project.users.length != (@users.length - 1) %>   
    
 <h3>Add Project Members</h3>
 

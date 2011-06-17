@@ -2,6 +2,32 @@ class Ability
   include CanCan::Ability
 
   def initialize(user)
+    if user.admin?
+      can :manage, :all
+    else
+      role = Role.find(user.role_id)
+        can :add_member, Project  if role.member_add
+        can :remove_member, Project  if role.member_remove
+        can :create, Project  if role.project_create
+        can :read, Project     if role.project_read
+        can :update, Project  if role.project_update
+        can :destroy, Project  if role.project_delete
+        
+        can :create, Ticket  if role.ticket_create
+        can :read, Ticket  if role.ticket_read
+        can :update, Ticket if role.ticket_update
+        can :destroy, Ticket  if role.ticket_delete
+        can :assign, Ticket  if role.ticket_assign
+        
+        can [:create, :destroy], Comment  if role.ticket_comment
+        
+        can :create, Tag  if role.tag_create
+        can :read, Tag if role.tag_read
+        can :update, Tag  if role.tag_update
+        can :destroy, Tag  if role.tag_delete
+        
+    end
+      
     # Define abilities for the passed in user here. For example:
     #
     #   user ||= User.new # guest user (not logged in)

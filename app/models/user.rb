@@ -6,20 +6,25 @@ class User < ActiveRecord::Base
   # :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable and :omniauthable
   
   devise :database_authenticatable, :registerable, :lockable,
-         :recoverable, :rememberable, :trackable, :validatable#, :confirmable
+         :recoverable, :trackable, :validatable, :confirmable
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me, :first_name, :middle_name, :last_name, :user_name, :birthdate, :role_id, :admin, :login, :locked_at
   has_one :role
-	has_many :tickets#, :dependent => :destroy
-  has_many :comments#, :dependent => :destroy
+	has_many :tickets
+  has_many :comments
   has_and_belongs_to_many :projects
   
-  
-  
   validates_presence_of :first_name, :middle_name, :last_name, :user_name, :email
-  
-  after_create :pre_populate
+
+  before_save :set_status_active
+  #after_create :pre_populate
+
+  scope :locked, :conditions => { :status => 'Locked' }
+
+  def set_status_active
+    self.status = "Active"
+  end
   
   def full_name
     "#{self.last_name.capitalize}, #{self.first_name.capitalize} " ##{self.middle_name[0].capitalize}.
@@ -30,11 +35,11 @@ class User < ActiveRecord::Base
 	end
 	
 	def pre_populate
-	  self.first_name = "Hi"
-	  self.middle_name = self.user_name
-	  self.last_name = self.user_name
-	  self.password = self.user_name
-	  self.password_confirmation = self.user_name
+	  self.first_name = "proyekto"
+	  self.middle_name = "proyekto"
+	  self.last_name = "proyekto"
+	  self.password = "proyekto"
+	  self.password_confirmation = "proyekto"
 	end
 	
 protected

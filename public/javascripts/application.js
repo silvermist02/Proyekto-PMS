@@ -63,10 +63,17 @@ function render_ajax(title, content)
 $(function()
 {
   
-  $("#content_nav li a").bind("ajax:success", function(){
+  $("#content_nav li a").live("ajax:complete", function(){
        alert("WORKKKKK!");
        $("#loading").show();
     });
+
+  $("#content_nav li a")
+      .bind('ajax:beforeSend', function() {alert("loading!");})
+      .bind('ajax:success', function(data, status, xhr) {alert("success!");})
+      .bind('ajax:failure', function(xhr, status, error) {alert("failure!");})
+      .bind('ajax:complete', function() {alert("complete!");});
+
 
 
   
@@ -157,6 +164,12 @@ $(function()
       $(this).html("&laquo; hideme");
     }
   });
+
+  if($("#unauthorized").html().trim() != "")
+  {
+    msg = $("#unauthorized").html();
+    error_dialog(msg, "Unauthorized Access");
+  }
   
   ////log time slider
   
