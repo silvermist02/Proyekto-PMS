@@ -9,8 +9,8 @@
 
 <% @projects.each do |project| %>
   <tr class="<%= cycle("", "even")%>">
-    <td><%= link_to project.name, project %></td>
-    <td><%= project.description %></td>
+    <td><%= link_to project.name.truncate(30), project %></td>
+    <td><%= project.description.truncate(60) %></td>
     <td><%= link_to 'Edit', edit_project_path(project), :remote => true %> |
      <%= link_to 'Delete', project, :confirm => 'Are you sure?', :method => :delete, :remote => true %></td>
   </tr>

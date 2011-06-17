@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
 
   attr_accessor :login
-  attr_writer :locked_at
+  # attr_writer :locked_at
   # Include default devise modules. Others available are:
   # :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable and :omniauthable
   
@@ -17,10 +17,10 @@ class User < ActiveRecord::Base
   
   validates_presence_of :first_name, :middle_name, :last_name, :user_name, :email
 
-  before_save :set_status_active
+  before_create :set_status_active
   #after_create :pre_populate
 
-  scope :locked, :conditions => { :status => 'Locked' }
+  scope :locked, :conditions => ['status = ? or failed_attempts > ?', 'Locked', 3]
 
   def set_status_active
     self.status = "Active"

@@ -54,14 +54,16 @@ class UsersController < ApplicationController
   end
     
   def unlock
-    @user.locked_at ||= nil
+		unlock_user
+		
     @user.update_attributes(params[:user])
-
-    redirect_to users_path
+		
+		get_locked_users
+    render :locked
   end
 
   def locked
-    @user = User.locked
+    get_locked_users
   end
  
 private
@@ -98,8 +100,16 @@ private
 	  @user.last_name = "proyekto"
 	  @user.password = "proyekto"
 	  @user.password_confirmation = "proyekto"
-
   end
   
+  def unlock_user
+  	@user.locked_at = nil
+    @user.failed_attempts = 0
+    @user.status = "Active"
+  end
+  
+  def get_locked_users
+  	@users = User.locked
+  end
 end
 

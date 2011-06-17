@@ -20,8 +20,8 @@
 		klass = ticket.priority.eql?("Critical") ? "critical" : ""
 	%>
 	<tr class="<%= cycle("", "even")%>">
-		<td class="<%= klass %>"><%= link_to ticket.name, ticket %></td>
-		<td><%= ticket.description %></td>
+		<td class="<%= klass %>"><%= link_to ticket.name.truncate(30), ticket %></td>
+		<td><%= ticket.description.truncate(60) %></td>
 		<td><%= ticket.status %></td>
 		<td><%= ticket.priority %></td>
 		<td><%= ticket.tracker %></td>

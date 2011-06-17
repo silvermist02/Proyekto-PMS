@@ -54,7 +54,7 @@
 <% if user_signed_in? %>
   <div id="whoami-container">
     <div id="whoami-content">
-      <span><small>You are: </small><br/><%= link_to current_user.email, user_path(current_user)%></span>
+      <span><small>You are: </small><br/><%= link_to current_user.email.truncate(22), user_path(current_user)%></span>
     </div>
     <div id="whoami">
       <span>&raquo; whoami?</span>

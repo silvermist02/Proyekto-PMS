@@ -9,6 +9,9 @@ Proyekto::Application.routes.draw do
     member do
       get 'unlock', :to => 'users#unlock'
     end
+    collection do
+    	get 'locked', :to => 'users#locked'
+    end
   end
     
   resources :projects do
