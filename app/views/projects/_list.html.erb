@@ -19,6 +19,10 @@
 
 <% else %>
 
-  <p class="content_error">There are no projects yet. Create one <%= link_to "here", new_project_path, :remote => true %>.</p>
+  <p class="content_error"><%= current_user.admin ? "There are " : "You have " %>no projects yet. 
+  <% if can? :create, Project %>
+  Create one <%= link_to "here", new_project_path, :remote => true %>.
+  <% end %>
+  </p>
 
 <% end %>
