@@ -100,7 +100,7 @@ private
   end
 
   def render_index
-    get_projects
+    @projects = Project.all
     
     respond_to do |format|
       format.html { redirect_to projects_path }
