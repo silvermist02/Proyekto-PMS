@@ -4,7 +4,9 @@
 
   <p><%= f.label :email %>
   <%= f.email_field :email %></p>
-
+  
+  <% if current_user.admin%>
+  
   <p><%= f.label "Administrator" %>
   <%= f.check_box :admin %></p>
   
@@ -13,6 +15,8 @@
   <%= f.label "Role"%>
   <%= f.select :role_id, options_from_collection_for_select(@roles, 'id', 'name')%>
   </div>
+  <% end %>
+  
   <% end %>
   
   <% if not @new %>

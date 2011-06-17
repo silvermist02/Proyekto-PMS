@@ -10,7 +10,7 @@
 
 <ul id="content_nav">
 
-  <li><%= link_to "Overview", "#", :id => "selected", :remote => true %></li>
+  <li><%= link_to "Overview", @ticket, :id => "selected", :remote => true %></li>
   
   <li><%= link_to "Assign", "#", :id => "assign_ticket_button"%></li>
   
@@ -76,7 +76,16 @@
   
 <% end %>
 
+<script type="text/javascript">
+  log_slider("<%= @ticket.logged_time %>");
+</script>
+
+
 </div>
+
+
+
+
 
 </div>
 
@@ -105,7 +114,5 @@
 <%= render :partial => 'comments/newform' %>   
 
 </div>
-<script type="text/javascript">
-  log_slider("<%= @ticket.logged_time %>");
-</script>
+
 

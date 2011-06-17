@@ -33,22 +33,22 @@
 <% @roles.each do |role| %>
   <tr class="<%= cycle("", "even")%>">
     <td><%= role.name %><br /><%= link_to 'Edit', edit_role_path(role), :remote => true %> | <%= link_to 'Del', role, :confirm => 'Are you sure?', :method => :delete, :remote => true %></td>
-    <td><%= role.project_create %></td>
-    <td><%= role.project_read %></td>
-    <td><%= role.project_update %></td>
-    <td><%= role.project_delete %></td>
-    <td><%= role.member_add %></td>
-    <td><%= role.member_remove %></td>
-    <td><%= role.ticket_create %></td>
-    <td><%= role.ticket_read %></td>
-    <td><%= role.ticket_update %></td>
-    <td><%= role.ticket_delete %></td>
-    <td><%= role.ticket_assign %></td>
-    <td><%= role.ticket_comment %></td>
-    <td><%= role.tag_create %></td>
-    <td><%= role.tag_read %></td>
-    <td><%= role.tag_update %></td>
-    <td><%= role.tag_delete %></td>
+    <td class="<%= role.project_create ? "green" : "critical" %>"><%= role.project_create %></td>
+    <td class="<%= role.project_read ? "green" : "critical" %>"><%= role.project_read %></td>
+    <td class="<%= role.project_update ? "green" : "critical" %>"><%= role.project_update %></td>
+    <td class="<%= role.project_delete ? "green" : "critical" %>"><%= role.project_delete %></td>
+    <td class="<%= role.member_add ? "green" : "critical" %>"><%= role.member_add %></td>
+    <td class="<%= role.member_remove ? "green" : "critical" %>"><%= role.member_remove %></td>
+    <td class="<%= role.ticket_create ? "green" : "critical" %>"><%= role.ticket_create %></td>
+    <td class="<%= role.ticket_read ? "green" : "critical" %>"><%= role.ticket_read %></td>
+    <td class="<%= role.ticket_update ? "green" : "critical" %>"><%= role.ticket_update %></td>
+    <td class="<%= role.ticket_delete ? "green" : "critical" %>"><%= role.ticket_delete %></td>
+    <td class="<%= role.ticket_assign ? "green" : "critical" %>"><%= role.ticket_assign %></td>
+    <td class="<%= role.ticket_comment ? "green" : "critical" %>"><%= role.ticket_comment %></td>
+    <td class="<%= role.tag_create ? "green" : "critical" %>"><%= role.tag_create %></td>
+    <td class="<%= role.tag_read ? "green" : "critical" %>"><%= role.tag_read %></td>
+    <td class="<%= role.tag_update ? "green" : "critical" %>"><%= role.tag_update %></td>
+    <td class="<%= role.tag_delete ? "green" : "critical" %>"><%= role.tag_delete %></td>
   </tr>
 <% end %>
 </table>

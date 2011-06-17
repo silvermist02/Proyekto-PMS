@@ -61,7 +61,7 @@ function render_ajax(title, content)
 
 function log_slider(default_val)
 {
-  arr = default_val.split('hour/s');
+  arr = default_val.split(' hour/s');
 
   $("#slider-range-min").slider({
 		range: "min",
@@ -69,7 +69,7 @@ function log_slider(default_val)
 		min: 0,
 		max: 720,
 		slide: function( event, ui ) {
-			$("#ticket_logged_time").val( ui.value + "hour/s");
+			$("#ticket_logged_time").val( ui.value + " hour/s");
 		}
 	});
 //	$("#ticket_logged_time").val( $("#slider-range-min").slider("value") + "hour/s");

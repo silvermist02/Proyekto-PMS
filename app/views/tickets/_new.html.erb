@@ -1,5 +1,13 @@
+<% if not @project.users.include?(current_user) %>
+
+<p class="content_error"> You cannot create a ticket since you are not a member of this project.</p>
+
+<% else %>
+
 <h3>New Ticket</h3>
 
 <%= form_for @ticket, :url => project_tickets_path, :method => :post, :remote => true do |f| %>
   <%= render :partial => 'form', :locals => { :f => f }%>
+<% end %>
+
 <% end %>

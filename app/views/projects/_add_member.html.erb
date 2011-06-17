@@ -8,7 +8,7 @@
   
 </ul>
    
-<% if @project.users.length != (@users.length - 1) %>   
+<% if @project.users.length != @users.length %>   
    
 <h3>Add Project Members</h3>
 
@@ -16,13 +16,13 @@
 
   <p>
 		<% @users.each do |user| %>
-			<% unless @project.users.include?(user) or user.id.eql?(1) %>
+			<% unless @project.users.include?(user) %>  
 				<div>
 					<%= check_box_tag "project[user_ids][]", user.id %>
-					<%= user.last_name %>
+					<%= user.full_name %>
 				</div>
 			<% else %>
-				<%= hidden_field_tag "project[user_ids][]", user.id unless user.id.eql?(1) %>
+				<%= hidden_field_tag "project[user_ids][]",user.id %>
 			<% end %>
 		<% end %>
 	</p>

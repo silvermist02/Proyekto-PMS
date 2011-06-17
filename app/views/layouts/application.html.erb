@@ -27,6 +27,8 @@
         <li><%= link_to "Home", root_path, :id => dashboard  %></li>
         <% if current_user.admin %>
         <li><%= link_to "Users", users_path, :id => user  %></li>
+        <% else %>
+        <li><%= link_to "Profile", user_path(current_user), :id => user %></li>
         <% end %>
         <li><%= link_to "Projects", projects_path, :id => project %></li>
         <li><%= link_to "Sign Out", destroy_user_session_path%></li>
@@ -47,7 +49,6 @@
       </ul>
       <% end %>
     </div>
-    <div id="loading" style="display:none"><img src="images/loading.gif"/></div>
     <%= yield %>
    
   </div>

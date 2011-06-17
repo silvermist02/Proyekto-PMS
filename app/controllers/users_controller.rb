@@ -32,7 +32,11 @@ class UsersController < ApplicationController
   end
   
   def edit
-    render_form
+    if not @user.eql? current_user and !current_user.admin
+      redirect_to root_path
+    else
+      render_form
+    end
   end
   
   def update
@@ -84,7 +88,7 @@ private
 
   def render_index
     respond_to do |format|
-      format.html { render 'form' }
+      format.html { redirect_to user_path(@user) }
       format.js do
         get_users
         render :index
