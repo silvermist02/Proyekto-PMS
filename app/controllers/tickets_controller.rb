@@ -60,7 +60,7 @@ class TicketsController < ApplicationController
   end
   
   def assign
-
+    
   end
   
   def log_time

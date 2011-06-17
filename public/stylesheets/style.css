@@ -544,3 +544,5 @@ fieldset {
   background: #e3e3e3;
 }
 
+#ticket-search form { width: 100% };
+
