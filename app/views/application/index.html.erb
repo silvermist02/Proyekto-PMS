@@ -8,10 +8,11 @@
 </ul>
 
 <% end %>
-  <% unless current_user.projects.empty? %>
 <div class="clearfix"></div>
 
 <div>
+  <% unless current_user.projects.empty? %>
+
     <h3>Your Projects</h3>
   <%= render 'projects/list' %>
 
