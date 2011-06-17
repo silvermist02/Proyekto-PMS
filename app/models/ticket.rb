@@ -5,11 +5,14 @@ class Ticket < ActiveRecord::Base
 	acts_as_taggable
   acts_as_taggable_on :tags
 
+  before_create :set_logged_time
   validates_presence_of :name, :description, :status, :priority, :tracker, :created_by
   
   before_create :creator_assigned
 
   scope :search_index, :conditions => ['status != ?', 'Resolved']
+  scope :resolved, :conditions => ['status = ?', 'Resolved']
+  scope :open, :conditions => ['status = ?', 'Open']
     
   def creator_assigned
   	self.assigned_to = self.created_by
@@ -21,5 +24,9 @@ class Ticket < ActiveRecord::Base
 		else
 			find(:all)
 		end
+	end
+
+	def set_logged_time
+    self.logged_time = "0hour/s"
 	end
 end

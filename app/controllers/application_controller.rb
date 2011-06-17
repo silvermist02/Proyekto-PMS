@@ -3,8 +3,6 @@ class ApplicationController < ActionController::Base
   
   before_filter :get_projects, :selected, :authenticate_user!
 
-  
-
   rescue_from CanCan::AccessDenied do |exception|
       flash[:error] = exception.message
       redirect_to root_url
@@ -20,7 +18,17 @@ protected
   
 private 
   def get_projects
-    @projects = Project.all
+    if user_signed_in?
+      if current_user.admin
+        @projects = Project.all
+      else
+        @projects = current_user.projects
+      end
+    else
+      @projects = []
+    end
+
+    return @projects
   end
   
   def selected

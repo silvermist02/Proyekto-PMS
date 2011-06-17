@@ -6,13 +6,13 @@
   <%= f.text_field :description %></p>
   
   <p><%= f.label :status %>
-  <%=  f.select :status, options_for_select('Open' => 'Open', 'Assigned' => 'Assigned', 'In-Progress' => 'In-Progress', 'Resolved' => 'Resolved', 'Reopened' => 'Reopened') %></p>
+  <%=  f.select :status, options_for_status(false) %></p>
 
   <p><%= f.label :priority %>
-  <%=  f.select :priority, options_for_select('Minor' => 'Minor', 'Normal' => 'Normal', 'Major' => 'Major', 'Critical' => 'Critical') %></p>
+  <%=  f.select :priority, options_for_priority(false) %></p>
   
-  <p><%= f.label :tracker %>
-  <%=  f.select :tracker, options_for_select('Bug' => 'Bug', 'Task' => 'Task') %></p>
+  <p><%= f.label "Type" %>
+  <%=  f.select :tracker, options_for_tracker(false) %></p>
   
   <p><%= f.label :tag_list %>
   <%= f.text_field :tag_list %></p>

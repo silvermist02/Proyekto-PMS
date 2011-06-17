@@ -1,1 +1,22 @@
-<p><%= @project.description %></p>
+<div class="info">
+
+<p><span class="info_label">Description</span><%= @project.description %></p>
+
+<h3>Tickets</h3>
+
+<% if not @project.tickets.empty? %>
+
+<p><span class="info_label">Total no.</span><%= @project.tickets.size %></p>
+
+<p><span class="info_label">Open</span><%= @project.tickets.open.size %></p>
+
+<p><span class="info_label">Resolved</span><%= @project.tickets.resolved.size %></p>
+
+<p><span class="info_label">Total Log Time</span><%= @project.total_log_time %></p>
+
+<% else %>
+
+<p>This project has no tickets yet.</p>
+
+<% end %>
+</div>

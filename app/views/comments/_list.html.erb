@@ -4,12 +4,10 @@
     <li <%= "class=user-comment" if c.user.eql? current_user %>>
       <span class="comment-email"><%= link_to "#{c.user.last_name}, #{c.user.first_name}", user_path(c.user)%> </span>says:<br/>
       <span class="full-date"><%= time_ago_in_words(c.created_at) %> ago</span><br/>
-      <p><%= truncate(c.body, :length => 100) %></p><br/>
+      <p><%= c.body %></p><br/>
       
-      <%= link_to 'View More', ticket_comment_path(@ticket, c), :remote => true%> 
       <% if c.user.eql? current_user %>
-      <!--<%= link_to 'Edit', edit_ticket_comment_path(@ticket, c), :id => "edit-comment-#{num}" %> -->
-      | <%= link_to 'Delete', ticket_comment_path(@ticket, c), :confirm => 'Are you sure?', :method => :delete, :id => "delete-comment-#{num}", :remote => true %>
+ <%= link_to 'Delete', ticket_comment_path(@ticket, c), :confirm => 'Are you sure?', :method => :delete, :id => "delete-comment-#{num}", :remote => true %>
       <% end %>
      </li>
     <% num += 1 %>

@@ -2,6 +2,7 @@
   <tr>
     <th>Name</th>
     <th>Email</th>
+    <th>Role</th>
     <th></th>
   </tr>
 
@@ -12,8 +13,9 @@
   <tr class="<%= cycle("", "even") %>">
     <td class="<%= status %>"><%= link_to user.full_name, user %></td>
     <td><%= user.email %></td>
+    <td><%= user.role_name %></td>
     <td>
-      <%= link_to 'Edit', edit_user_path(user), :remote => true %> | <%= link_to 'Destroy', user, :confirm => 'Are you sure?', :method => :delete, :remote => true %> 
+      <%= link_to 'Edit', edit_user_path(user), :remote => true %> | <%= link_to 'Delete', user, :confirm => 'Are you sure?', :method => :delete, :remote => true %> 
       <%= link_to "Unlock", unlock_user_path(user) if not user.locked_at.nil? %> 
     </td>
   </tr>

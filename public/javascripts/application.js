@@ -1,5 +1,6 @@
 // Place your application-specific JavaScript functions and classes here
 // This file is automatically included by javascript_include_tag :defaults
+
 function nav_change_selected(index)
 {
   $("#content_nav li a").attr("id", "");
@@ -58,6 +59,21 @@ function render_ajax(title, content)
   $(".page_content").html(content).hide().fadeIn();
 }
 
+function log_slider(default_val)
+{
+  arr = default_val.split('hour/s');
+
+  $("#slider-range-min").slider({
+		range: "min",
+		value: parseInt(arr[0]),
+		min: 0,
+		max: 720,
+		slide: function( event, ui ) {
+			$("#ticket_logged_time").val( ui.value + "hour/s");
+		}
+	});
+//	$("#ticket_logged_time").val( $("#slider-range-min").slider("value") + "hour/s");
+}
 
 
 $(function()
@@ -171,18 +187,7 @@ $(function()
     error_dialog(msg, "Unauthorized Access");
   }
   
-  ////log time slider
   
-  $("#slider-range-min").slider({
-		range: "min",
-		value: 0,
-		min: 0,
-		max: 720,
-		slide: function( event, ui ) {
-			$("#ticket_logged_time").val( ui.value + "hour/s");
-		}
-	});
-	$("#ticket_logged_time").val( $("#slider-range-min").slider("value") + "hour/s");
 
   check_roles();  
   

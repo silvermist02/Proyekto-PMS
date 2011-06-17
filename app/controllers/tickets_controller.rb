@@ -1,6 +1,7 @@
 class TicketsController < ApplicationController
   before_filter :get_projects, :selected
   before_filter :get_project, :only => [:index, :search, :new, :create, :assign]
+  before_filter :get_ticket, :only => [:show, :edit, :update, :assign, :log_time, :destroy]
   load_and_authorize_resource
 
 
@@ -9,8 +10,9 @@ class TicketsController < ApplicationController
   end
   
   def show
-    @ticket = Ticket.find(params[:id])
     @comments = @ticket.comments
+
+    get_users
   end
   
   def new
@@ -18,7 +20,7 @@ class TicketsController < ApplicationController
   end
   
   def edit
-    @ticket = Ticket.find(params[:id])
+
   end
   
   def create
@@ -31,17 +33,21 @@ class TicketsController < ApplicationController
   end
   
   def update
-    @ticket = Ticket.find(params[:id])
-
     if @ticket.update_attributes(params[:ticket])
-      redirect_to projects_path
+      get_users
+      respond_to do |format| 
+        format.html { redirect_to tickets_path(@ticket) }
+        format.js
+      end
     else
-      render :edit
+      respond_to do |format| 
+        format.html { render :edit }
+        format.js
+      end
     end
   end
   
   def destroy
-    @ticket = Ticket.find(params[:id])
     @project = @ticket.project
     @ticket.destroy
     
@@ -49,11 +55,11 @@ class TicketsController < ApplicationController
   end
   
   def assign
-  	@ticket = Ticket.find(params[:id])
+
   end
   
   def log_time
-		@ticket = Ticket.find(params[:id])
+
   end
   
   def search
@@ -72,5 +78,14 @@ private
   
   def selected
     @selected = "project";
+  end
+
+  def get_users
+    @assigned = User.find(@ticket.assigned_to).nil? ? "None." : User.find(@ticket.assigned_to).full_name
+    @creator = User.find(@ticket.created_by).full_name
+  end
+
+  def get_ticket
+    @ticket = Ticket.find(params[:id])
   end
 end

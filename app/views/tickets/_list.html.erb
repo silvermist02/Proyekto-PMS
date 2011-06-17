@@ -8,6 +8,7 @@
     <th>Priority</th>
     <th>Tracker</th>
     <th>Assigned To</th>
+    <th>Logged Time</th>
     <th>Date Created</th>
     <th></th>
   </tr>
@@ -33,8 +34,10 @@
 				none
 			<% end %>
 		</td>
+		<td><%= ticket.logged_time %></td>
 		<td><%= ticket.created_at.to_date %></td>
-		<td><%= link_to 'Edit', edit_ticket_path(ticket) %> | <%= link_to 'Destroy', ticket, :confirm => 'Are you sure?', :method => :delete, :remote => true %></td>
+		
+		<td><%= link_to 'Delete', ticket, :confirm => 'Are you sure?', :method => :delete, :remote => true %></td>
 	</tr>
 <% end %>
 </table>

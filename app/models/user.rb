@@ -41,13 +41,23 @@ class User < ActiveRecord::Base
 	  self.password = "proyekto"
 	  self.password_confirmation = "proyekto"
 	end
-	
+
+	def role_name
+	  if self.admin
+	    @role_name = "Administrator"
+	  else
+      role = Role.find(self.role_id)
+      @role_name = role.name
+    end
+
+    return @role_name
+  end
+
 protected
 
- def self.find_for_database_authentication(warden_conditions)
-   conditions = warden_conditions.dup
-   login = conditions.delete(:login)
-   where(conditions).where(["lower(user_name) = :value OR lower(email) = :value", { :value => login.downcase }]).first
- end
-	
+  def self.find_for_database_authentication(warden_conditions)
+    conditions = warden_conditions.dup
+    login = conditions.delete(:login)
+    where(conditions).where(["lower(user_name) = :value OR lower(email) = :value", { :value => login.downcase }]).first
+  end 
 end

@@ -1,4 +1,4 @@
-render_ajax("<%= @new ? "New" : "Edit" %> User","<%= escape_javascript( render :partial => 'form') %>");
+render_ajax("<%= @new ? "New" : "Edit" %> User","<%= escape_javascript( render :partial => 'formajax') %>");
 check_roles();
 datepicker();
 $("#user_admin").change(function()

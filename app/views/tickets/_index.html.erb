@@ -6,8 +6,8 @@
   <hr />
   Assigned Person: <%= select_tag :name, options_from_collection_for_select(@project.users, 'id', 'full_name'), {:include_blank => "-- User --"} %>
   Date: <%= text_field_tag :date, "", :class => "date_picker", :onClick => "remove_date()" %>
-  <%=  select_tag :status, options_for_select('-- Status --' => '', 'Open' => 'Open', 'Assigned' => 'Assigned', 'In-Progress' => 'In-Progress', 'Resolved' => 'Resolved', 'Reopened' => 'Reopened') %>
-  <%=  select_tag :priority, options_for_select('-- Priority --' => '', 'Minor' => 'Minor', 'Normal' => 'Normal', 'Major' => 'Major', 'Critical' => 'Critical') %>
+  <%=  select_tag :status, options_for_status(true) %>
+  <%=  select_tag :priority, options_for_priority(true) %>
   <%= submit_tag "Search", :name => nil, :date => nil, :status => nil, :priority => nil %>
   </p>
 <% end %>

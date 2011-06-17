@@ -156,7 +156,7 @@ form label {
    display: inline-block;
    height: 30px;
    text-align: right;
-   width: 150px;
+   width: 140px;
 }
 
 form label:after {
@@ -189,8 +189,8 @@ form input[type=submit] {
 
 form input[type=submit]:hover {
   background: #004480;
-  background: -moz-linear-gradient(center top , #325986, #004480) repeat scroll 0 0 transparent;
-  background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#325986), to(#004480));
+  background: -moz-linear-gradient(center top , #325989, #004480) repeat scroll 0 0 transparent;
+  background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#325989), to(#004480));
   border: 1px solid #004480;
 }
 
@@ -331,7 +331,7 @@ fieldset {
   border: 1px solid #004480;
   padding: 8px;
   margin: 10px 0;
-  background: #f9f9f9;
+  background: #fff;
   
   -moz-border-radius: 8px;
   -webkit-border-radius: 8px;
@@ -401,4 +401,124 @@ fieldset {
 
 #whoami-content {
   color: #444;
+}
+
+/********************** Sign In Form **********************/
+
+#sign_in {
+  width: 400px;
+  position: absolute;
+  left: 50%;
+  margin: -100px 0 0 -200px;
+  top: 50%; 
+}
+
+#sign_in_header {
+  background: #001A31;
+  border: 1px solid #001A31;
+  padding: 10px 0 0 0;
+  background: -moz-linear-gradient(center top , #001A31, #004480) repeat scroll 0 0 transparent;
+  background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#004480), to(#001A31));
+  -moz-border-radius: 25px 25px 0px 0px;
+  -webkit-border-radius: 25px 25px 0px 0px;
+  border-radius: 25px 25px 0px 0px;
+}
+
+#sign_in_header h2 {
+  font-family: Georgia;
+  color: #fff;
+  font-weight: normal;
+}
+
+#sign_in_body {
+  border: 1px solid #001A31;
+  padding: 20px 10px 30px 10px;
+  -moz-border-radius: 0px 0px 25px 25px;
+}
+
+#sign_in_body input[type=submit] {
+  float: right;
+}
+
+#sign_in_body a {
+  font-size: 10px;
+  padding: 0 0 0 25px;
+}
+
+/********************** Admin Index **********************/
+
+#admin_nav {
+  margin: auto;
+  width:730px;
+}
+
+#admin_nav li {
+  float: left;
+  margin: 30px;
+}
+
+#admin_nav li a {
+  display: block;
+  width: 100%;
+  color:  #fff;
+  padding: 30px 10px;
+  text-align: center;
+  margin: 30px;
+  font:bold 30px Helvetica;
+  -moz-border-radius: 25px;
+  -webkit-border-radius: 25px;
+  border-radius: 25px;
+}
+
+#admin_nav li a:hover {
+  background: #325989;
+}
+
+#manage_users { background: #004480; }
+
+#manage_proj { background: #001A31 }
+
+
+/********************** Content Information **********************/
+
+.info_label {
+  display: inline-block;
+  text-align: right;
+  font-size: 12px;
+  width: 100px; 
+  padding: 10px;
+}
+
+.info_label:after { content: ":" }
+
+/******************** Comments *****************************/
+
+#comment-form-body {
+  display: block;
+  height: 100px;
+  margin: 10px auto 18px;
+  padding: 18px;
+  width: 900px
+}
+
+#comment_submit {
+  float: right;
+}
+.user-comment {
+  padding: 18px;
+  border: 1px solid #001A31;
+  margin: 10px 0;
+  font-size: 14px;
+}
+
+.full-date {
+  font: italic 12px Arial;
+}
+
+#roles_tbl th {
+
+  background:  #004480;
+  font-size: 10px;
+  text-align: center;
+
 }

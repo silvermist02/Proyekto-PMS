@@ -1,4 +1,7 @@
 <h2><%= @new ? "New" : "Edit" %> User</h2>
 
+<%= form_for @user do |f| %>
 
-<%= render :partial => 'form' %>
+<%= render :partial => 'form', :locals => { :f => f }  %>
+
+<% end %>

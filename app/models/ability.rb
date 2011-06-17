@@ -5,6 +5,7 @@ class Ability
     if user.admin?
       can :manage, :all
     else
+      can :read, Comment
       role = Role.find(user.role_id)
         can :add_member, Project  if role.member_add
         can :remove_member, Project  if role.member_remove

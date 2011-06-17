@@ -1,0 +1,5 @@
+<h3>Edit Ticket</h3>
+
+<%= form_for @ticket, :remote => true do |f| %>
+  <%= render :partial => 'form', :locals => { :f => f }%>
+<% end %>

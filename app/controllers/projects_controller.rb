@@ -6,7 +6,7 @@ class ProjectsController < ApplicationController
   load_and_authorize_resource
 
   def index
-    @projects = Project.all
+    get_projects
     #User.tag_counts.order('count DESC').limit(5).where('tags.name LIKE ?', params[:query]) 
   end
   

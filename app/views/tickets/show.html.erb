@@ -1,6 +1,12 @@
 <div class="grid_12">
 
-<h2><%= @ticket.name %></h2>
+<%
+		klass = ""
+		klass = @ticket.priority.eql?("Critical") ? "critical" : ""
+%>
+
+
+<h2 class="<%= klass %>" id="title"><%= @ticket.name %></h2>
 
 <ul id="content_nav">
 
@@ -10,7 +16,7 @@
   
   <li><%= link_to "Log Time", "#", :id => "log_time_button"%></li>
   
-  <li><%= link_to "Edit Ticket", "#", :remote => true %></li>
+  <li><%= link_to "Edit Ticket", edit_ticket_path(@ticket), :remote => true %></li>
   
   <li><%= link_to "Back to Project", project_path(@ticket.project) %></li>
   
@@ -22,19 +28,7 @@
 
 <div class="page_content ticket_main_content grid_5">
 
-<p>
-  <b>Name:</b>
-  <%= @ticket.name %>
-</p>
-
-<p>
-	<b>Tags:</b>
-	<% unless @ticket.tags.empty? %>
-		<%= @ticket.tag_list %>
-	<% else %>
-		no tags
-  <% end %>
-</p>
+<%= render :partial => 'show', :locals => { :klass => klass } %>
 
 </div>
 
@@ -47,9 +41,9 @@
 
 <hr/>
 <% if not @ticket.project.users.empty? %>
-<%= form_for @ticket do |f| %>
+<%= form_for @ticket, :remote => true do |f| %>
 
-  <p><%= f.label :assigned_to %>
+  <p><%= f.label "Assign to" %>
   <%= f.select :assigned_to, options_from_collection_for_select(@ticket.project.users, 'id', 'full_name') %></p>
 	
   <p class="submit-button right"><%= f.submit "Assign" %></p>
@@ -72,9 +66,9 @@
 
 <hr/>
 
-<%= form_for @ticket do |f| %>
+<%= form_for @ticket, :remote => true do |f| %>
 
-  <p><%= f.label "Time: hh:mm:ss" %>
+  <p><%= f.label "Time" %>
   <%= f.text_field :logged_time, :readonly => "readonly"%></p>
   <div id="slider-range-min"></div>
 	
@@ -92,11 +86,10 @@
 
 <div class="grid_12">
 
-<%if not @comments.empty? %>
-<br/>
 <h3>Comments</h3> 
-<%= link_to 'Write a comment', "#comment-form", :id => "add-comment", :class => 'links' if user_signed_in? %>
-<br/>
+
+<hr/>
+<%if not @comments.empty? %>
 <div class="comment-list">
   <%= render :partial => 'comments/list'%>   
 </div>
@@ -112,4 +105,7 @@
 <%= render :partial => 'comments/newform' %>   
 
 </div>
+<script type="text/javascript">
+  log_slider("<%= @ticket.logged_time %>");
+</script>
 

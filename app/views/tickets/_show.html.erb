@@ -1,0 +1,45 @@
+<div class="info">
+<p>
+  <span class="info_label">Description:</span>
+  <%= @ticket.description %>
+</p>
+
+<p>
+  <span class="info_label">Status:</span>
+  <%= @ticket.status %>
+</p>
+
+<p>
+  <span class="info_label">Priority:</span>
+  <span class="<%= klass %>"><%= @ticket.priority %></span>
+</p>
+
+<p>
+  <span class="info_label">Type:</span>
+  <%= @ticket.tracker %>
+</p>
+
+<p>
+  <span class="info_label">Assigned To:</span>
+  <%= @assigned %>
+</p>
+
+<p>
+  <span class="info_label">Logged Time:</span>
+  <%= @ticket.logged_time %>
+</p>
+
+<p>
+  <span class="info_label">Created By:</span>
+  <%= @creator %>
+</p>
+
+
+
+<% unless @ticket.tags.empty? %>
+<p>
+	<span class="info_label">Tags:</span>
+		<%= @ticket.tag_list %>
+</p>
+<% end %>
+</div>

@@ -15,15 +15,14 @@ class UsersController < ApplicationController
 
     render_form
   end
+
+  def show
+
+  end
   
   def create
     @user = User.new params[:user]
-    @user.first_name = "proyekto"
-	  @user.middle_name = "proyekto"
-	  @user.last_name = "proyekto"
-	  @user.password = "proyekto"
-	  @user.password_confirmation = "proyekto"
-
+    populate_fields
     
     if @user.save
       render_index
@@ -85,12 +84,21 @@ private
 
   def render_index
     respond_to do |format|
-      format.html { redirect_to users_path }
+      format.html { render 'form' }
       format.js do
         get_users
         render :index
       end
     end
+  end
+
+  def populate_fields
+    @user.first_name = "proyekto"
+	  @user.middle_name = "proyekto"
+	  @user.last_name = "proyekto"
+	  @user.password = "proyekto"
+	  @user.password_confirmation = "proyekto"
+
   end
   
 end

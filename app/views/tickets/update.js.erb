@@ -1,0 +1,27 @@
+<% if not @ticket.errors.any? %>
+
+<%
+		klass = ""
+		klass = @ticket.priority.eql?("Critical") ? "critical" : ""
+%>
+<% if @ticket.priority.eql?("Critical") %>
+$("#title").addClass("critical");
+<% else %>
+$("#title").removeClass("critical");
+<% end %>
+
+render_ajax("<%= @ticket.name %>","<%= escape_javascript(render :partial => 'show', :locals => { :klass => klass })%>");
+nav_change_selected(0);
+
+<% else %>
+
+var emsg = "";
+
+<% @ticket.errors.full_messages.each do |msg| %>
+
+  emsg += "<%= msg %><br/>" ;  
+
+<% end %>
+
+error_dialog(emsg, "Edit Ticket Error");
+<% end %>
